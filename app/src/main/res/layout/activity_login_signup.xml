@@ -1,12 +1,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_relative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/logintitle"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@color/main"
+        android:gravity="center"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:fontFamily="sans-serif-medium" />
     <ScrollView
         android:id="@+id/login_scroll"
+        android:layout_below="@id/logintitle"
         style="@android:style/Widget.Holo.Light.ScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_row="0"
 
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="50dp"
                 android:dividerPadding="0dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
@@ -60,7 +75,7 @@
                     android:background="@drawable/edittext"
                     android:hint="Enter username"
                     android:paddingLeft="2dp"
-                    android:paddingRight="2dp"/>
+                    android:paddingRight="2dp" />
             </LinearLayout>
 
             <LinearLayout

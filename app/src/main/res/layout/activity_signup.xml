@@ -1,17 +1,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_relative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/regtitle"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@color/main"
+        android:gravity="center"
+        android:text="Register"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:fontFamily="sans-serif-medium" />
     <ScrollView
         android:id="@+id/login_scroll"
+        android:layout_below="@id/regtitle"
         style="@android:style/Widget.Holo.Light.ScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="true"
         android:fillViewport="true">
+
 
         <GridLayout
             android:id="@+id/login_grid"
@@ -25,13 +41,14 @@
             android:rowOrderPreserved="false"
             android:scrollbars="vertical"
             android:verticalScrollbarPosition="right">
+
             <LinearLayout
                 android:id="@+id/name_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_row="0"
 
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="50dp"
                 android:dividerPadding="0dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
@@ -54,9 +71,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:inputType="textPersonName"
                     android:background="@drawable/edittext"
                     android:hint="Enter name"
+                    android:inputType="textPersonName"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp" />
             </LinearLayout>
