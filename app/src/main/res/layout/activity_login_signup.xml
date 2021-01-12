@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_relative"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+    <ScrollView
+        android:id="@+id/login_scroll"
+        style="@android:style/Widget.Holo.Light.ScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:fillViewport="true">
+
+        <GridLayout
+            android:id="@+id/login_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFF"
+            android:columnCount="1"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:rowCount="4"
+            android:rowOrderPreserved="false"
+            android:scrollbars="vertical"
+            android:verticalScrollbarPosition="right">
+
+            <LinearLayout
+                android:id="@+id/username_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+
+                android:layout_marginTop="150dp"
+                android:dividerPadding="0dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/username_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+
+                    android:paddingLeft="30dp"
+
+                    android:text="Username: "
+
+                    android:textIsSelectable="false"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/edittext"
+                    android:hint="Enter username"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/password_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+
+                android:layout_marginTop="15dp"
+                android:dividerPadding="0dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/password_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+
+                    android:paddingLeft="30dp"
+
+                    android:text="Password: "
+
+                    android:textIsSelectable="false"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/edittext"
+                    android:hint="Enter password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"/>
+            </LinearLayout>
+        </GridLayout>
+    </ScrollView>
+</RelativeLayout>
