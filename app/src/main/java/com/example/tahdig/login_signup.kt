@@ -9,7 +9,13 @@ class login_signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_signup)
+        val intent1 = Intent(this,signup::class.java)
 
-
+        accept_button.setOnClickListener {
+            //check username and password
+        }
+        register_text.setOnClickListener {
+            startActivity(intent1)
+        }
     }
 }
