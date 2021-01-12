@@ -5,10 +5,83 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:context=".MainActivity">
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:id="@+id/scrollStart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:fillViewport="true"
+
+        android:focusable="auto">
+
+    <GridLayout
+        android:id="@+id/grid_start"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        />
+        android:background="#F7FAF9"
+        android:columnCount="1"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:rowCount="4"
+        android:rowOrderPreserved="false"
+        android:scrollbars="vertical"
+        android:verticalScrollbarPosition="right">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_row="0"
+            android:alpha="1"
+            android:background="@drawable/tahdig" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_row="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+
+            android:layout_marginRight="5dp"
+            android:gravity="center_horizontal"
+            android:text="TahDig"
+            android:textColor="@color/main"
+
+            android:textSize="40sp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/start_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+
+            android:layout_row="2"
+            android:layout_gravity="center_horizontal"
+
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button"
+            android:text="Start"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/About_us_button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+
+            android:layout_row="3"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/button"
+            android:text="About us"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </GridLayout>
+    </ScrollView>
 
 </RelativeLayout>
