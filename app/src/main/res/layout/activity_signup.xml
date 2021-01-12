@@ -181,7 +181,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/accept_button_layout"
+                android:id="@+id/accept_signup_button_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_row="4"
@@ -192,7 +192,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/accept_button"
+                    android:id="@+id/accept_signup_button"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/button"
