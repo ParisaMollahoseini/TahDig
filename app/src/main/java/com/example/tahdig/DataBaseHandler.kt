@@ -37,7 +37,24 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int)
     {}
+    fun insertAddress(adr: Address)
+    {
+        val db = this.writableDatabase
+        val cv = ContentValues()
 
+        cv.put("city", adr.city)
+        cv.put("street", adr.street)
+        cv.put("alley", adr.alley)
+        cv.put("number", adr.number)
+
+        var result = db.insert("Address", null, cv)
+
+        if (result ==-1.toLong())
+            Toast.makeText(context, "Address insertion failed", Toast.LENGTH_SHORT).show()
+        else
+            Toast.makeText(context, "Address successfully inserted", Toast.LENGTH_SHORT).show()
+
+    }
     fun insertUser(usr: User)
     {
         val db = this.writableDatabase
@@ -54,5 +71,23 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
             Toast.makeText(context, "user insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "user successfully inserted", Toast.LENGTH_SHORT).show()
+    }
+    fun readDatauser(): MutableList<User> {
+        val list: MutableList<User> = ArrayList()
+        val db = this.readableDatabase
+        val query = "Select * from User"
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                val user = User()
+                user.username = result.getString(result.getColumnIndex("username"))
+                user.name = result.getString(result.getColumnIndex("name"))
+                user.password = result.getString(result.getColumnIndex("password"))
+                user.addressID = result.getString(result.getColumnIndex("addressID")).toInt()
+                list.add(user)
+            }
+            while (result.moveToNext())
+        }
+        return list
     }
 }

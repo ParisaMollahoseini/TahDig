@@ -2,12 +2,13 @@ package com.example.tahdig
 
 open class User
 {
-    var username:Int =0
+    var username:String =""
     var name:String =""
     var password:String =""
     var addressID:Int =0
 
-    constructor(username:Int, name:String, password:String, addressID:Int)
+    constructor(){}
+    constructor(username:String, name:String, password:String, addressID:Int)
     {
         this.username = username
         this.name = name
