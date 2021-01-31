@@ -1,5 +1,8 @@
 package com.example.tahdig
 
+import kotlin.math.sign
+
+
 open class User
 {
     var username:String =""
@@ -14,5 +17,26 @@ open class User
         this.name = name
         this.password = password
         this.addressID = addressID
+    }
+    fun logIn(): Int {
+        val db = DatabaseHandler(signup())
+
+        val data = db.readDatauser()
+
+        for (i in 0 until data.size) {
+            if(data[i].username == this.username && data[i].password == this.password)
+            {
+                return 1
+            }
+        }
+        return 0
+    }
+    fun logOut(){
+        val db = DatabaseHandler(signup()).writableDatabase
+        db.delete("Loggedperson",null,null)
+    }
+    fun change_info()
+    {
+
     }
 }

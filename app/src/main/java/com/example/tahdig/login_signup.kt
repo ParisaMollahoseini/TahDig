@@ -13,6 +13,7 @@ class login_signup : AppCompatActivity() {
         val intent1 = Intent(this,signup::class.java)
 
         accept_button.setOnClickListener {
+
             Toast.makeText( this,"You are logged in successfully...", Toast.LENGTH_SHORT).show()
 
             //check username and password
