@@ -340,6 +340,7 @@
                     android:fadeScrollbars="false"
                     android:gravity="top"
                     android:hint="Enter number"
+                    android:inputType="number"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp"
                     android:scrollbarSize="10dp"

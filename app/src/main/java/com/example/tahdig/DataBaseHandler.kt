@@ -14,6 +14,7 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
 {
     override fun onCreate(db: SQLiteDatabase?)
     {
+
         val createTableAddress = "CREATE TABLE Address " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "city VARCHAR(50)," +
@@ -32,13 +33,22 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
 
         db?.execSQL(createTableUser)
 
+
         //////////////other tables here
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int)
     {}
-    fun insertAddress(adr: Address)
+    fun cleartables()
     {
+        val db = this.writableDatabase
+        db.delete("Address",null,null)
+        db.delete("User",null,null)
+        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Address';")
+
+    }
+    fun insertAddress(adr: Address): Long {
+
         val db = this.writableDatabase
         val cv = ContentValues()
 
@@ -48,15 +58,15 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
         cv.put("number", adr.number)
 
         var result = db.insert("Address", null, cv)
-
+        adr.id = result.toInt()
         if (result ==-1.toLong())
             Toast.makeText(context, "Address insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Address successfully inserted", Toast.LENGTH_SHORT).show()
+        return result
 
     }
-    fun insertUser(usr: User)
-    {
+    fun insertUser(usr: User): Long {
         val db = this.writableDatabase
         val cv = ContentValues()
 
@@ -71,6 +81,7 @@ class DatabaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
             Toast.makeText(context, "user insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "user successfully inserted", Toast.LENGTH_SHORT).show()
+        return result
     }
     fun readDatauser(): MutableList<User> {
         val list: MutableList<User> = ArrayList()
