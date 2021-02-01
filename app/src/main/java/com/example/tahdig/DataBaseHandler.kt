@@ -51,18 +51,19 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Address';")
 
     }
-    fun insertAddress(adr: Address): Long {
+    fun insertAddress(city:String,street:String,alley:String,
+    number:Int): Long {
 
         val db = this.writableDatabase
         val cv = ContentValues()
 
-        cv.put("city", adr.city)
-        cv.put("street", adr.street)
-        cv.put("alley", adr.alley)
-        cv.put("number", adr.number)
+        cv.put("city", city)
+        cv.put("street", street)
+        cv.put("alley", alley)
+        cv.put("number", number)
 
         var result = db.insert("Address", null, cv)
-        adr.id = result.toInt()
+
         if (result ==-1.toLong())
             Toast.makeText(context, "Address insertion failed", Toast.LENGTH_SHORT).show()
         else
@@ -70,14 +71,14 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         return result
 
     }
-    fun insertUser(usr: User): Long {
+    fun insertUser(username:String,name:String,password:String,addressID:Int): Long {
         val db = this.writableDatabase
         val cv = ContentValues()
 
-        cv.put("username", usr.username)
-        cv.put("name", usr.name)
-        cv.put("password", usr.password)
-        cv.put("addressID", usr.addressID)
+        cv.put("username", username)
+        cv.put("name", name)
+        cv.put("password", password)
+        cv.put("addressID", addressID)
 
         var result = db.insert("User", null, cv)
 
@@ -105,4 +106,27 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         }
         return list
     }
+    fun insertLoggedperson(username:String,password:String){
+        val db = this.writableDatabase
+        val cv = ContentValues()
+
+        cv.put("username", username)
+        cv.put("password", password)
+
+
+        var result = db.insert("Loggedperson", null, cv)
+    }
+    fun deletefromLoggedperson(){
+        val db = this.writableDatabase
+        db.delete("Loggedperson",null,null)
+    }
 }
+
+class User {
+    var username : String = ""
+    var password : String = ""
+    var name : String = ""
+    var addressID : Int = 0
+}
+
+

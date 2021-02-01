@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             {
                 startActivity(intent1)
             }
-            startActivity(intent1)
+
         }
     }
 }

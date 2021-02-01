@@ -13,14 +13,31 @@ class login_signup2 : AppCompatActivity() {
         setContentView(R.layout.activity_login_signup2)
         val intent1 = Intent(this,signup::class.java)
         val intent2 = Intent(this,MainActivity::class.java)
+        val intent3 = Intent(this,seller_main::class.java)
 
         logintitle_toolbar.setNavigationOnClickListener(View.OnClickListener() {
             startActivity(intent2)
         });
 
         accept_button.setOnClickListener {
-            //val user = User
-            Toast.makeText( this,"You are logged in successfully...", Toast.LENGTH_SHORT).show()
+            val context = this
+            val db = DatabaseHandler(context)
+
+            val data = db.readDatauser()
+            var flag = 0
+            for (i in 0 until data.size) {
+                if(data[i].username.equals(username.toString()))
+                {
+                    flag = 1
+                    Toast.makeText( this,"You are logged in successfully...", Toast.LENGTH_SHORT).show()
+                    db.insertLoggedperson(username.toString(),password.toString())
+                    startActivity(intent3)
+                }
+            }
+            if(flag == 0 )
+                Toast.makeText( this,"Logging failed ...", Toast.LENGTH_SHORT).show()
+
+
 
             //check username and password
         }

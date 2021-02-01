@@ -18,23 +18,16 @@ class signup : AppCompatActivity() {
 
 
         accept_signup_button.setOnClickListener {
-            val addr = Address(city_text.text.toString(),street_text.text.toString(),alley_text.text.toString(),
+
+            val res_addr = db.insertAddress(city_text.text.toString(),street_text.text.toString(),alley_text.text.toString(),
                 number_text.text.toString().toInt())
-            val res_addr = db.insertAddress(addr)
             if (res_addr != -1.toLong() )
             {
-                val user_sign = User(username.text.toString(),name.text.toString(),password.text.toString(),addr.id)
-                val res_user = db.insertUser(user_sign)
+                val res_user = db.insertUser(username.text.toString(),name.text.toString(),password.text.toString(),res_addr.toInt())
                 if(res_user != -1.toLong())
                 {
-                    Toast.makeText( this,"You are signed up successfully..."+addr.id.toString(), Toast.LENGTH_SHORT).show()
-                    val data = db.readDatauser()
-                    alley_text.text.clear()
-                    for (i in 0 until data.size) {
-                        alley_text.append(
-                            data[i].name + " " + data[i].addressID.toString() + "\n"
-                        )
-                    }
+                    Toast.makeText( this,"You are signed up successfully with id: "+res_addr.toString(), Toast.LENGTH_SHORT).show()
+
                     startActivity(intent1)
                 }
             }
