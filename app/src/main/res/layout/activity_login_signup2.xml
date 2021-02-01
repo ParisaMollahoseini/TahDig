@@ -7,21 +7,26 @@
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/logintitle"
-        android:layout_width="192dp"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/logintitle_toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+
         android:background="@color/main"
-        android:gravity="center"
-        android:text="Login"
-        android:textColor="@color/white"
-        android:textSize="36sp"
-        app:fontFamily="sans-serif-medium" />
+        android:minHeight="70dp"
+        android:navigationIcon="?attr/homeAsUpIndicator"
+        app:contentInsetStartWithNavigation="50dp"
+        app:navigationIcon="@drawable/ic_action_name"
+        app:title="Login"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:titleTextColor="@color/white" />
+
+
+
     <ScrollView
         android:id="@+id/login_scroll"
-        android:layout_below="@id/logintitle"
+        android:layout_below="@id/logintitle_toolbar"
         style="@android:style/Widget.Holo.Light.ScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
