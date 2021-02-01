@@ -4,11 +4,11 @@ import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
-
+import android.content.Context
 
 const val DATABASE_NAME = "TahDigDB"
 
-class DatabaseHandler(var context:signup) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1)
+class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1)
 {
     override fun onCreate(db: SQLiteDatabase?)
     {
