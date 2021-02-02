@@ -37,9 +37,9 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
 
         db?.execSQL(createTableUser)
 
-
         val createTableRestaurant = "CREATE TABLE Restaurant " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "name VARCHAR(50)," +
                 "ownerUsername VARCHAR(16)," +
                 "businessLicenseNumber VARCHAR(10)," +
                 "phoneNumber VARCHAR(12)," +
@@ -50,9 +50,9 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
 
         db?.execSQL(createTableRestaurant)
 
-
         val createTableNewRequests = "CREATE TABLE NewRequests " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "name VARCHAR(50)," +
                 "ownerUsername VARCHAR(16)," +
                 "businessLicenseNumber VARCHAR(10)," +
                 "phoneNumber VARCHAR(12)," +
@@ -61,6 +61,13 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
                 "FOREIGN KEY(ownerUsername) REFERENCES User(username))"
 
         db?.execSQL(createTableNewRequests)
+
+        val createTableLoggedRestaurants = "CREATE TABLE LoggedRestaurants " +
+                "(id INTEGER," +
+                "name VARCHAR(50)," +
+                "menu VARCHAR(100))"
+
+        db?.execSQL(createTableLoggedRestaurants)
 
     }
 
@@ -77,7 +84,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
 
 
     fun insertAddress(city:String,street:String,alley:String,
-    number:Int): Long {
+                      number:Int): Long {
 
         val db = this.writableDatabase
         val cv = ContentValues()
@@ -132,25 +139,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         }
         return list
     }
-    fun readDatareq(): MutableList<requestlist> {
-        val list: MutableList<requestlist> = ArrayList()
-        val db = this.readableDatabase
-        val query = "Select * from NewRequests"
-        val result = db.rawQuery(query, null)
-        if (result.moveToFirst()) {
-            do {
-                val user = requestlist()
-                user.businessLicenseNumber = result.getString(result.getColumnIndex("businessLicenseNumber"))
-                user.id = result.getInt(result.getColumnIndex("id"))
-                user.ownerUsername = result.getString(result.getColumnIndex("ownerUsername"))
-                user.phoneNumber = result.getString(result.getColumnIndex("phoneNumber"))
-                user.addressID = result.getString(result.getColumnIndex("addressID")).toInt()
-                list.add(user)
-            }
-            while (result.moveToNext())
-        }
-        return list
-    }
+
     fun insertLoggedperson(username:String,password:String){
         val db = this.writableDatabase
         val cv = ContentValues()
@@ -167,11 +156,11 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
     }
 
 
-
-    fun insertRestaurant(ownerUsername:String,businessLicenseNumber:String,phoneNumber:String,addressID:Int): Long {
+    fun insertRestaurant(name:String,ownerUsername:String,businessLicenseNumber:String,phoneNumber:String,addressID:Int): Long {
         val db = this.writableDatabase
         val cv = ContentValues()
 
+        cv.put("name", name)
         cv.put("ownerUsername", ownerUsername)
         cv.put("businessLicenseNumber", businessLicenseNumber)
         cv.put("phoneNumber", phoneNumber)
@@ -186,10 +175,11 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         return result
     }
 
-    fun insertNewRequests(ownerUsername:String,businessLicenseNumber:String,phoneNumber:String,addressID:Int): Long {
+    fun insertNewRequests(name:String,ownerUsername:String,businessLicenseNumber:String,phoneNumber:String,addressID:Int): Long {
         val db = this.writableDatabase
         val cv = ContentValues()
 
+        cv.put("name", name)
         cv.put("ownerUsername", ownerUsername)
         cv.put("businessLicenseNumber", businessLicenseNumber)
         cv.put("phoneNumber", phoneNumber)
@@ -197,7 +187,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
 
         var result = db.insert("NewRequests", null, cv)
 
-        if (result ==-1.toLong())
+        if (result == -1.toLong())
             Toast.makeText(context, "Request insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Request inserted successfully!", Toast.LENGTH_SHORT).show()
@@ -220,6 +210,48 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "Request inserted successfully!", Toast.LENGTH_SHORT).show()
         return result
     }
+
+    fun findRestaurants(ownerUsername:String): MutableList<AbstractRestaurant> {
+        val list: MutableList<AbstractRestaurant> = ArrayList()
+        val db = this.readableDatabase
+        val query = "Select * from Restaurant where ownerUsername = $ownerUsername" ///////////
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                val res = AbstractRestaurant()
+                res.id = result.getInt(result.getColumnIndex("id")) //////
+                res.name = result.getString(result.getColumnIndex("name"))
+                res.menu = result.getString(result.getColumnIndex("password"))
+                list.add(res)
+            }
+            while (result.moveToNext())
+        }
+        return list
+    }
+
+    fun findRequests(ownerUsername:String): MutableList<AbstractRestaurant> {
+        val list: MutableList<AbstractRestaurant> = ArrayList()
+        val db = this.readableDatabase
+        val query = "Select * from NewRequests where ownerUsername = $ownerUsername" ///////////
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                val res = AbstractRestaurant()
+                res.id = result.getInt(result.getColumnIndex("id")) //////
+                res.name = result.getString(result.getColumnIndex("name"))
+                res.menu = result.getString(result.getColumnIndex("password"))
+                list.add(res)
+            }
+            while (result.moveToNext())
+        }
+        return list
+    }
+}
+
+class AbstractRestaurant {
+    var id : Int = 0
+    var name : String = ""
+    var menu : String = ""
 }
 
 class requestlist {
