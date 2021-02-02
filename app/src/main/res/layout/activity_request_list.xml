@@ -28,20 +28,12 @@
         android:layout_below="@+id/reqtitle_toolbar"
         android:focusable="auto">
 
-        <GridLayout
-            android:id="@+id/grid_start"
+        <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#F7FAF9"
-            android:columnCount="1"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:rowCount="4"
-            android:rowOrderPreserved="false"
-            android:scrollbars="vertical"
-            android:verticalScrollbarPosition="right">
-
-
-        </GridLayout>
+            android:choiceMode="multipleChoice"
+            android:divider="@color/main"
+            android:dividerHeight="4dp" />
     </ScrollView>
 </RelativeLayout>

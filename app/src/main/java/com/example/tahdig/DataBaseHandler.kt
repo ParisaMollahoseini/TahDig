@@ -132,7 +132,25 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         }
         return list
     }
-
+    fun readDatareq(): MutableList<requestlist> {
+        val list: MutableList<requestlist> = ArrayList()
+        val db = this.readableDatabase
+        val query = "Select * from NewRequests"
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                val user = requestlist()
+                user.businessLicenseNumber = result.getString(result.getColumnIndex("businessLicenseNumber"))
+                user.id = result.getInt(result.getColumnIndex("id"))
+                user.ownerUsername = result.getString(result.getColumnIndex("ownerUsername"))
+                user.phoneNumber = result.getString(result.getColumnIndex("phoneNumber"))
+                user.addressID = result.getString(result.getColumnIndex("addressID")).toInt()
+                list.add(user)
+            }
+            while (result.moveToNext())
+        }
+        return list
+    }
     fun insertLoggedperson(username:String,password:String){
         val db = this.writableDatabase
         val cv = ContentValues()
@@ -202,6 +220,15 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "Request inserted successfully!", Toast.LENGTH_SHORT).show()
         return result
     }
+}
+
+class requestlist {
+
+    var id : Int = 0
+    var ownerUsername : String = ""
+    var businessLicenseNumber : String = ""
+    var phoneNumber : String = ""
+    var addressID : Int = 0
 }
 
 class User {
