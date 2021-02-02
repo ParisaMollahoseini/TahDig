@@ -37,20 +37,38 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
 
         db?.execSQL(createTableUser)
 
+        ///////////////////added
+        val createTableRestaurant = "CREATE TABLE Restaurant " +
+                "(id VARCHAR(16) PRIMARY KEY," +
+                "menu VARCHAR(100)," +
+                "addressID INTEGER," +
+                "FOREIGN KEY(addressID) REFERENCES Address(id))"
 
-        //////////////other tables here
+        db?.execSQL(createTableRestaurant)
+
+
+        val createTableNewRequests = "CREATE TABLE NewRequests " +
+                "(id VARCHAR(16) PRIMARY KEY," +
+                "menu VARCHAR(100)," +
+                "addressID INTEGER," +
+                "FOREIGN KEY(addressID) REFERENCES Address(id))"
+
+        db?.execSQL(createTableRestaurant)
+        ///////////////////////
+
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int)
-    {}
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {}
+
     fun cleartables()
     {
         val db = this.writableDatabase
         db.delete("Address",null,null)
         db.delete("User",null,null)
         db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Address';")
-
     }
+
+
     fun insertAddress(city:String,street:String,alley:String,
     number:Int): Long {
 
@@ -69,8 +87,8 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         else
             Toast.makeText(context, "Address successfully inserted", Toast.LENGTH_SHORT).show()
         return result
-
     }
+
     fun insertUser(username:String,name:String,password:String,addressID:Int): Long {
         val db = this.writableDatabase
         val cv = ContentValues()
@@ -88,6 +106,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "user successfully inserted", Toast.LENGTH_SHORT).show()
         return result
     }
+
     fun readDatauser(): MutableList<User> {
         val list: MutableList<User> = ArrayList()
         val db = this.readableDatabase
@@ -106,6 +125,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         }
         return list
     }
+
     fun insertLoggedperson(username:String,password:String){
         val db = this.writableDatabase
         val cv = ContentValues()
