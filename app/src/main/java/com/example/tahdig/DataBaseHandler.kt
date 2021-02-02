@@ -73,8 +73,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {}
 
-    fun cleartables()
-    {
+    fun cleartables() {
         val db = this.writableDatabase
         db.delete("Address",null,null)
         db.delete("User",null,null)
@@ -82,9 +81,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Address';")
     }
 
-
-    fun insertAddress(city:String,street:String,alley:String,
-                      number:Int): Long {
+    fun insertAddress(city:String,street:String,alley:String, number:Int): Long {
 
         val db = this.writableDatabase
         val cv = ContentValues()
@@ -150,11 +147,11 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
 
         var result = db.insert("Loggedperson", null, cv)
     }
+
     fun deletefromLoggedperson(){
         val db = this.writableDatabase
         db.delete("Loggedperson",null,null)
     }
-
 
     fun insertRestaurant(name:String,ownerUsername:String,businessLicenseNumber:String,phoneNumber:String,addressID:Int): Long {
         val db = this.writableDatabase
@@ -246,6 +243,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         }
         return list
     }
+
     fun readDatareq(): MutableList<requestlist> {
         val list: MutableList<requestlist> = ArrayList()
         val db = this.readableDatabase

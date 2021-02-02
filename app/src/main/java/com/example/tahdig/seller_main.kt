@@ -15,7 +15,6 @@ class seller_main : AppCompatActivity() {
         setContentView(R.layout.activity_seller_main)
 
 
-
         sellertitle_toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_seller_logout -> {
@@ -28,6 +27,7 @@ class seller_main : AppCompatActivity() {
         }
 
     }
+
     fun onAlertDialog(view: View) {
         val intent1 = Intent(this, login_signup2::class.java)
 
