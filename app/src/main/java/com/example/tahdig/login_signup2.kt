@@ -14,6 +14,7 @@ class login_signup2 : AppCompatActivity() {
         val intent1 = Intent(this,signup::class.java)
         val intent2 = Intent(this,MainActivity::class.java)
         val intent3 = Intent(this,seller_main::class.java)
+        val intent4 = Intent(this,AdminMainActivity::class.java)
 
         logintitle_toolbar.setNavigationOnClickListener(View.OnClickListener() {
             startActivity(intent2)
@@ -33,7 +34,7 @@ class login_signup2 : AppCompatActivity() {
                     flag = 1
                     Toast.makeText( this,"You are logged in successfully...", Toast.LENGTH_SHORT).show()
                     db.insertLoggedperson(Username.toString(),Password.toString())
-                    startActivity(intent3)
+                    startActivity(intent4)
                 }
             }
             if(flag == 0 )
