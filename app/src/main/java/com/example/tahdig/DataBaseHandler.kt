@@ -246,6 +246,27 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         }
         return list
     }
+    fun readDatareq(): MutableList<requestlist> {
+        val list: MutableList<requestlist> = ArrayList()
+        val db = this.readableDatabase
+        val query = "Select * from NewRequests"
+        val result = db.rawQuery(query, null)
+        if (result.moveToFirst()) {
+            do {
+                val user = requestlist()
+
+                user.restaurant_name = result.getString(result.getColumnIndex("restaurant_name"))
+                user.businessLicenseNumber = result.getString(result.getColumnIndex("businessLicenseNumber"))
+                user.id = result.getInt(result.getColumnIndex("id"))
+                user.ownerUsername = result.getString(result.getColumnIndex("ownerUsername"))
+                user.phoneNumber = result.getString(result.getColumnIndex("phoneNumber"))
+                user.addressID = result.getString(result.getColumnIndex("addressID")).toInt()
+                list.add(user)
+            }
+            while (result.moveToNext())
+        }
+        return list
+    }
 }
 
 class AbstractRestaurant {
@@ -257,6 +278,7 @@ class AbstractRestaurant {
 class requestlist {
 
     var id : Int = 0
+    var restaurant_name : String = ""
     var ownerUsername : String = ""
     var businessLicenseNumber : String = ""
     var phoneNumber : String = ""
