@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val intent1 = Intent(this,login_signup2::class.java)
-        val intent2 = Intent(this,seller_main::class.java)
+        val intent2 = Intent(this,AdminMainActivity::class.java)
 
 
         start_button.setOnClickListener {
