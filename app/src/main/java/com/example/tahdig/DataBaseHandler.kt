@@ -24,7 +24,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
                 "city VARCHAR(50)," +
                 "street VARCHAR(50)," +
                 "alley VARCHAR(50)," +
-                "number INTEGER)"
+                "number VARCHAR(50))"
 
         db?.execSQL(createTableAddress)
 
