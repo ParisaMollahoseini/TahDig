@@ -53,7 +53,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
                 "addressID INTEGER," +
                 "FOREIGN KEY(addressID) REFERENCES Address(id))"
 
-        db?.execSQL(createTableRestaurant)
+        db?.execSQL(createTableNewRequests)
         ///////////////////////
 
     }
