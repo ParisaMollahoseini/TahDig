@@ -12,6 +12,10 @@
 
         <activity android:name=".login_signup2" />
         <activity
+            android:name=".AdminMainActivity"
+            android:label="@string/title_activity_admin_main"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar"/>
+        <activity
             android:name=".seller_main"
             android:label="@string/title_activity_seller_main"
             android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
