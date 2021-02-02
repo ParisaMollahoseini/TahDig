@@ -68,6 +68,7 @@
 
                     android:text="Username: "
 
+                    android:textColor="@color/cardview_dark_background"
                     android:textIsSelectable="false"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -80,7 +81,8 @@
                     android:background="@drawable/edittext"
                     android:hint="Enter username"
                     android:paddingLeft="2dp"
-                    android:paddingRight="2dp" />
+                    android:paddingRight="2dp"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -105,6 +107,7 @@
 
                     android:text="Password: "
 
+                    android:textColor="@color/cardview_dark_background"
                     android:textIsSelectable="false"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -118,7 +121,8 @@
                     android:hint="Enter password"
                     android:inputType="textPassword"
                     android:paddingLeft="2dp"
-                    android:paddingRight="2dp"/>
+                    android:paddingRight="2dp"
+                    android:textColor="@color/black" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/accept_button_layout"

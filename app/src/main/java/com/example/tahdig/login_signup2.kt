@@ -14,7 +14,7 @@ class login_signup2 : AppCompatActivity() {
         val intent1 = Intent(this,signup::class.java)
         val intent2 = Intent(this,MainActivity::class.java)
         val intent3 = Intent(this,seller_main::class.java)
-        val intent4 = Intent(this,AdminMainActivity::class.java)
+        val intent4 = Intent(this,admin_main::class.java)
 
         logintitle_toolbar.setNavigationOnClickListener(View.OnClickListener() {
             startActivity(intent2)
@@ -29,6 +29,7 @@ class login_signup2 : AppCompatActivity() {
 
             if(Username.text.toString().equals("admin") && Password.text.toString().equals("1234"))
             {
+                flag = 1
                 startActivity(intent4)
             }
             for (i in 0 until data.size) {
@@ -42,7 +43,7 @@ class login_signup2 : AppCompatActivity() {
                 }
             }
             if(flag == 0 )
-                Toast.makeText( this,"Logging failed ...", Toast.LENGTH_SHORT).show()
+                Toast.makeText( this,"Logging failed ...datasize:"+data.size.toString(), Toast.LENGTH_SHORT).show()
 
         }
         register_text.setOnClickListener {

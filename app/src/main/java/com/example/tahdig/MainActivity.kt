@@ -13,7 +13,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val intent1 = Intent(this,login_signup2::class.java)
-        val intent2 = Intent(this,AdminMainActivity::class.java)
+        val intent2 = Intent(this,admin_main::class.java)
+        val intent3 = Intent(this,seller_main::class.java)
 
 
 
@@ -21,10 +22,16 @@ class MainActivity : AppCompatActivity() {
             val context = this
             val db = DatabaseHandler(context).readableDatabase
             val num = DatabaseUtils.queryNumEntries(db, "Loggedperson")
-
+            val query = "Select * from Loggedperson"
+            val result = db.rawQuery(query, null)
             if (num != 0.toLong())
             {
-                startActivity(intent2)
+                val username1 = result.getString(result.getColumnIndex("username"))
+                val password1 = result.getString(result.getColumnIndex("password"))
+                if( username1.equals("admin") && password1.equals("1234"))
+                    startActivity(intent2)
+                else
+                    startActivity(intent3)
             }
             else
             {
