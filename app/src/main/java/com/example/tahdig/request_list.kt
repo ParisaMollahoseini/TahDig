@@ -34,6 +34,8 @@ class request_list : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
         //add list of req to ui
+        listView.setOnItemClickListener { parent, view, position, id ->
 
+        }
     }
 }
