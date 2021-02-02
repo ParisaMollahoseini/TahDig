@@ -14,7 +14,17 @@ class admin_main : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_main)
 
+        val intent1 = Intent(this,request_list::class.java)
 
+        //check number of req
+        var req_num = 0
+        //check number of req
+
+        req_title.text = req_title.text.toString() + req_num.toString()
+
+        req_title.setOnClickListener {
+           startActivity(intent1)
+        }
         admintitle_toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_logout -> {
