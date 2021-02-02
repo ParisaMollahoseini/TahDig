@@ -25,12 +25,14 @@ class login_signup2 : AppCompatActivity() {
 
             val data = db.readDatauser()
             var flag = 0
+            Toast.makeText( this,"datasize : "+data[0].password, Toast.LENGTH_SHORT).show()
+
             for (i in 0 until data.size) {
-                if(data[i].username == Username.toString())
+                if(data[i].username.equals(Username.text.toString()) && data[i].password.equals(Password.text.toString()))
                 {
                     flag = 1
                     Toast.makeText( this,"You are logged in successfully...", Toast.LENGTH_SHORT).show()
-                    db.insertLoggedperson(Username.toString(),password.toString())
+                    db.insertLoggedperson(Username.toString(),Password.toString())
                     startActivity(intent3)
                 }
             }
