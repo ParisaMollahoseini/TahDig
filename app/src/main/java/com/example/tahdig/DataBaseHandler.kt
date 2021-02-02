@@ -24,7 +24,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
                 "city VARCHAR(50)," +
                 "street VARCHAR(50)," +
                 "alley VARCHAR(50)," +
-                "number INTEGER)"
+                "number VARCHAR(50))"
 
         db?.execSQL(createTableAddress)
 
@@ -37,24 +37,30 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
 
         db?.execSQL(createTableUser)
 
-        ///////////////////added
+
         val createTableRestaurant = "CREATE TABLE Restaurant " +
-                "(id VARCHAR(16) PRIMARY KEY," +
-                "menu VARCHAR(100)," +
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "ownerUsername VARCHAR(16)," +
+                "businessLicenseNumber VARCHAR(10)," +
+                "phoneNumber VARCHAR(12)," +
                 "addressID INTEGER," +
-                "FOREIGN KEY(addressID) REFERENCES Address(id))"
+                "menu VARCHAR(100)," +
+                "FOREIGN KEY(addressID) REFERENCES Address(id)," +
+                "FOREIGN KEY(ownerUsername) REFERENCES User(username))"
 
         db?.execSQL(createTableRestaurant)
 
 
         val createTableNewRequests = "CREATE TABLE NewRequests " +
-                "(id VARCHAR(16) PRIMARY KEY," +
-                "menu VARCHAR(100)," +
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "ownerUsername VARCHAR(16)," +
+                "businessLicenseNumber VARCHAR(10)," +
+                "phoneNumber VARCHAR(12)," +
                 "addressID INTEGER," +
-                "FOREIGN KEY(addressID) REFERENCES Address(id))"
+                "FOREIGN KEY(addressID) REFERENCES Address(id)," +
+                "FOREIGN KEY(ownerUsername) REFERENCES User(username))"
 
         db?.execSQL(createTableNewRequests)
-        ///////////////////////
 
     }
 
@@ -141,6 +147,61 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         val db = this.writableDatabase
         db.delete("Loggedperson",null,null)
     }
+
+
+
+    fun insertRestaurant(ownerUsername:String,businessLicenseNumber:String,phoneNumber:String,addressID:Int): Long {
+        val db = this.writableDatabase
+        val cv = ContentValues()
+
+        cv.put("ownerUsername", ownerUsername)
+        cv.put("businessLicenseNumber", businessLicenseNumber)
+        cv.put("phoneNumber", phoneNumber)
+        cv.put("addressID", addressID) /////
+
+        var result = db.insert("Restaurant", null, cv)
+
+        if (result ==-1.toLong())
+            Toast.makeText(context, "Restaurant insertion failed", Toast.LENGTH_SHORT).show()
+        else
+            Toast.makeText(context, "Restaurant inserted successfully!", Toast.LENGTH_SHORT).show()
+        return result
+    }
+
+    fun insertNewRequests(ownerUsername:String,businessLicenseNumber:String,phoneNumber:String,addressID:Int): Long {
+        val db = this.writableDatabase
+        val cv = ContentValues()
+
+        cv.put("ownerUsername", ownerUsername)
+        cv.put("businessLicenseNumber", businessLicenseNumber)
+        cv.put("phoneNumber", phoneNumber)
+        cv.put("addressID", addressID)
+
+        var result = db.insert("NewRequests", null, cv)
+
+        if (result ==-1.toLong())
+            Toast.makeText(context, "Request insertion failed", Toast.LENGTH_SHORT).show()
+        else
+            Toast.makeText(context, "Request inserted successfully!", Toast.LENGTH_SHORT).show()
+        return result
+    }
+
+    fun addMenu(ResID:Int, menu:String): Int {
+        val db = this.writableDatabase
+        val cv = ContentValues()
+        cv.put("menu", menu) //////
+
+        val whereClause = "RestaurantID=?"
+        val whereArgs = arrayOf(ResID.toString())
+
+        var result = db.update("NewRequests", cv, whereClause, whereArgs)
+
+        if (result == -1)/////
+            Toast.makeText(context, "Request insertion failed", Toast.LENGTH_SHORT).show()
+        else
+            Toast.makeText(context, "Request inserted successfully!", Toast.LENGTH_SHORT).show()
+        return result
+    }
 }
 
 class User {
@@ -149,5 +210,3 @@ class User {
     var name : String = ""
     var addressID : Int = 0
 }
-
-
