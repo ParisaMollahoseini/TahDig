@@ -1,9 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_relative"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".request_list">
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/reqtitle_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@color/main"
+        android:minHeight="70dp"
+        android:navigationIcon="?attr/homeAsUpIndicator"
+        app:contentInsetStartWithNavigation="50dp"
+        app:navigationIcon="@drawable/ic_action_name"
+        app:title="Requests"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:titleTextColor="@color/white" />
+    <ScrollView
+        android:id="@+id/scrollStart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:fillViewport="true"
+        android:layout_below="@+id/reqtitle_toolbar"
+        android:focusable="auto">
+
+        <GridLayout
+            android:id="@+id/grid_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F7FAF9"
+            android:columnCount="1"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:rowCount="4"
+            android:rowOrderPreserved="false"
+            android:scrollbars="vertical"
+            android:verticalScrollbarPosition="right">
+
+
+        </GridLayout>
+    </ScrollView>
+</RelativeLayout>
