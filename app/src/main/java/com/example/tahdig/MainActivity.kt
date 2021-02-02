@@ -22,12 +22,15 @@ class MainActivity : AppCompatActivity() {
             val context = this
             val db = DatabaseHandler(context).readableDatabase
             val num = DatabaseUtils.queryNumEntries(db, "Loggedperson")
-            val query = "Select * from Loggedperson"
-            val result = db.rawQuery(query, null)
+
             if (num != 0.toLong())
             {
+                val query = "Select * from Loggedperson"
+                val result = db.rawQuery(query, null)
+                result.moveToFirst()
                 val username1 = result.getString(result.getColumnIndex("username"))
                 val password1 = result.getString(result.getColumnIndex("password"))
+                result.close()
                 if( username1.equals("admin") && password1.equals("1234"))
                     startActivity(intent2)
                 else

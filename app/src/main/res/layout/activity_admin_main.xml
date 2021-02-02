@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_relative"
+    android:id="@+id/layout_relative1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -16,10 +16,9 @@
         android:background="@color/main"
         android:foregroundTint="@color/white"
         android:minHeight="70dp"
+        app:menu="@menu/admin_menu"
         android:navigationIcon="?attr/homeAsUpIndicator"
         app:contentInsetStartWithNavigation="50dp"
-        app:menu="@menu/admin_menu"
-
         app:title="Admin HomePage"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.menu"
         app:titleTextColor="@color/white" />
