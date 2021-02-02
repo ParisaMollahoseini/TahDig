@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login_signup2.*
+import kotlinx.android.synthetic.main.activity_request_list.*
 
 class request_list : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,17 +23,16 @@ class request_list : AppCompatActivity() {
         val context = this
         val db = DatabaseHandler(context)
 
+        listView.adapter =  adapter
         val data = db.readDatareq()
-//        for (i in 0 until data.size) {
-//
-//            if(data[i].username.equals(Username.text.toString()) && data[i].password.equals(Password.text.toString()))
-//            {
-//                flag = 1
-//                Toast.makeText( this,"You are logged in successfully...", Toast.LENGTH_SHORT).show()
-//                db.insertLoggedperson(Username.toString(),Password.toString())
-//                startActivity(intent3)
-//            }
-//        }
+        for (i in 0 until data.size) {
+
+            itemlist.add("businessLicenseNumber: "+data[i].businessLicenseNumber+
+                "\nowner name: "+data[i].ownerUsername+"\nphone number: "+data[i].phoneNumber
+            +"\nAddress id: "+data[i].addressID)
+
+            adapter.notifyDataSetChanged()
+        }
         //add list of req to ui
 
     }
