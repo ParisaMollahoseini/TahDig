@@ -4,6 +4,7 @@ import android.content.Intent
 import android.database.DatabaseUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -17,8 +18,9 @@ class MainActivity : AppCompatActivity() {
 
         start_button.setOnClickListener {
             val context = this
-            val db = DatabaseHandler(context).readableDatabase  ///errorrrrrrrrrrrrrrrrrrrr
+            val db = DatabaseHandler(context).readableDatabase
             val num = DatabaseUtils.queryNumEntries(db, "Loggedperson")
+
             if (num != 0.toLong())
             {
                 startActivity(intent2)

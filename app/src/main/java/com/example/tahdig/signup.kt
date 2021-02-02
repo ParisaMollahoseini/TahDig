@@ -12,9 +12,7 @@ class signup : AppCompatActivity() {
         setContentView(R.layout.activity_signup)
 
         val intent1 = Intent(this,seller_main::class.java)
-
         val db = DatabaseHandler(this)
-
 
 
         accept_signup_button.setOnClickListener {
