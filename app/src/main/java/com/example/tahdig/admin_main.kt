@@ -20,7 +20,7 @@ class admin_main : AppCompatActivity() {
         var req_num = 0
         //check number of req
 
-        req_title.text = req_title.text.toString() + req_num.toString() + "\nClick for mode detail"
+        req_title.text = req_title.text.toString() + req_num.toString() + "\nClick for more detail"
 
         req_title.setOnClickListener {
            startActivity(intent1)
