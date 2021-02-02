@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         val intent2 = Intent(this,AdminMainActivity::class.java)
 
 
+
         start_button.setOnClickListener {
             val context = this
             val db = DatabaseHandler(context).readableDatabase

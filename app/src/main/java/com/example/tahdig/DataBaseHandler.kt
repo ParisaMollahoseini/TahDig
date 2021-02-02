@@ -65,6 +65,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         val db = this.writableDatabase
         db.delete("Address",null,null)
         db.delete("User",null,null)
+        db.delete("Loggedperson",null,null)
         db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Address';")
     }
 
