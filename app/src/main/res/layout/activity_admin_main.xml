@@ -20,7 +20,6 @@
         app:contentInsetStartWithNavigation="50dp"
         app:menu="@menu/admin_menu"
 
-        app:navigationIcon="@drawable/ic_action_name"
         app:title="Admin HomePage"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.menu"
         app:titleTextColor="@color/white" />

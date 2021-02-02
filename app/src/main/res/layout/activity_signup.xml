@@ -7,21 +7,22 @@
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/regtitle"
-        android:layout_width="192dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/registertitle_toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+
         android:background="@color/main"
-        android:gravity="center"
-        android:text="Register"
-        android:textColor="@color/white"
-        android:textSize="36sp"
-        app:fontFamily="sans-serif-medium" />
+        android:minHeight="70dp"
+        android:navigationIcon="?attr/homeAsUpIndicator"
+        app:contentInsetStartWithNavigation="50dp"
+        app:navigationIcon="@drawable/ic_action_name"
+        app:title="Register"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:titleTextColor="@color/white" />
     <ScrollView
         android:id="@+id/login_scroll"
-        android:layout_below="@id/regtitle"
+        android:layout_below="@id/registertitle_toolbar"
         style="@android:style/Widget.Holo.Light.ScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -60,7 +61,7 @@
                     android:layout_weight="1.5"
 
                     android:text="Name: "
-                    android:textColor="#000000"
+                    android:textColor="@color/cardview_dark_background"
                     android:textIsSelectable="false"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -71,10 +72,12 @@
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:background="@drawable/edittext"
-                    android:hint="Enter name"
+                    android:hint="parisa"
                     android:inputType="textPersonName"
                     android:paddingLeft="2dp"
-                    android:paddingRight="2dp" />
+                    android:paddingRight="2dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
             </LinearLayout>
 
             <LinearLayout
@@ -94,8 +97,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
 
-                    android:textColor="#000000"
                     android:text="Username: "
+                    android:textColor="@color/cardview_dark_background"
 
                     android:textIsSelectable="false"
                     android:textSize="24sp"
@@ -107,9 +110,11 @@
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:background="@drawable/edittext"
-                    android:hint="Enter username"
+                    android:hint="pm"
                     android:paddingLeft="2dp"
-                    android:paddingRight="2dp" />
+                    android:paddingRight="2dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
             </LinearLayout>
 
             <LinearLayout
@@ -128,9 +133,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:textColor="#000000"
-
                     android:text="Password: "
+
+                    android:textColor="@color/cardview_dark_background"
 
                     android:textIsSelectable="false"
                     android:textSize="24sp"
@@ -145,7 +150,8 @@
                     android:hint="Enter password"
                     android:inputType="textPassword"
                     android:paddingLeft="2dp"
-                    android:paddingRight="2dp" />
+                    android:paddingRight="2dp"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -163,9 +169,9 @@
                     android:id="@+id/Address_title"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textColor="#000000"
-
                     android:text="Address: "
+
+                    android:textColor="@color/cardview_dark_background"
                     android:textIsSelectable="false"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -198,13 +204,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
 
-                    android:textColor="#000000"
                     android:layout_weight="1.5"
-
                     android:text="City: "
+
+                    android:textColor="@color/cardview_dark_background"
                     android:textIsSelectable="false"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+
                 <EditText
                     android:id="@+id/city_text"
                     android:layout_width="0dp"
@@ -214,13 +221,14 @@
                     android:background="@drawable/edittext"
                     android:fadeScrollbars="false"
                     android:gravity="top"
-                    android:textColor="#000000"
-                    android:hint="Enter city"
-                    android:paddingLeft="2dp"
+                    android:hint="isfahan"
+                    android:paddingLeft="5dp"
                     android:paddingRight="2dp"
                     android:scrollbarSize="10dp"
                     android:scrollbarStyle="insideInset"
-                    android:scrollbars="vertical" />
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
 
             </LinearLayout>
             <LinearLayout
@@ -242,8 +250,8 @@
 
 
                     android:layout_weight="1.5"
-                    android:textColor="#000000"
                     android:text="Street: "
+                    android:textColor="@color/cardview_dark_background"
                     android:textIsSelectable="false"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -257,12 +265,14 @@
                     android:background="@drawable/edittext"
                     android:fadeScrollbars="false"
                     android:gravity="top"
-                    android:hint="Enter street"
-                    android:paddingLeft="2dp"
+                    android:hint="saadarabad"
+                    android:paddingLeft="5dp"
                     android:paddingRight="2dp"
                     android:scrollbarSize="10dp"
                     android:scrollbarStyle="insideInset"
-                    android:scrollbars="vertical" />
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/alley_layout"
@@ -281,10 +291,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
 
-                    android:textColor="#000000"
                     android:layout_weight="1.5"
-
                     android:text="Alley: "
+
+                    android:textColor="@color/cardview_dark_background"
                     android:textIsSelectable="false"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -298,12 +308,14 @@
                     android:background="@drawable/edittext"
                     android:fadeScrollbars="false"
                     android:gravity="top"
-                    android:hint="Enter alley"
-                    android:paddingLeft="2dp"
+                    android:hint="farhadi"
+                    android:paddingLeft="5dp"
                     android:paddingRight="2dp"
                     android:scrollbarSize="10dp"
                     android:scrollbarStyle="insideInset"
-                    android:scrollbars="vertical" />
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/number_layout"
@@ -321,11 +333,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textColor="#000000"
-
                     android:layout_weight="1.5"
 
-                    android:text="Number: "
+                    android:text="PostalCode: "
+
+                    android:textColor="@color/cardview_dark_background"
                     android:textIsSelectable="false"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -339,13 +351,15 @@
                     android:background="@drawable/edittext"
                     android:fadeScrollbars="false"
                     android:gravity="top"
-                    android:hint="Enter number"
+                    android:hint="12354..."
                     android:inputType="number"
-                    android:paddingLeft="2dp"
+                    android:paddingLeft="5dp"
                     android:paddingRight="2dp"
                     android:scrollbarSize="10dp"
                     android:scrollbarStyle="insideInset"
-                    android:scrollbars="vertical" />
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
             </LinearLayout>
 
             <LinearLayout
