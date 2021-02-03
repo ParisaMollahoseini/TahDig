@@ -78,6 +78,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         db.delete("User",null,null)
         db.delete("Loggedperson",null,null)
         db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='Address';")
+        db.close()
     }
 
     fun insertAddress(city:String,street:String,alley:String, number:Int): Long {
@@ -143,10 +144,9 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         cv.put("username", username)
         cv.put("password", password)
 
-        db.delete("Loggedperson", null, null)
-        db.delete("LoggedRestaurants", null, null)
 
         var result = db.insert("Loggedperson", null, cv)
+        db.close()
     }
 
     fun deletefromLoggedperson(){
@@ -195,13 +195,14 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
     fun addMenu(ResID:Int, menu:String): Int {
         val db = this.writableDatabase
         val cv = ContentValues()
-        cv.put("menu", menu)
+        cv.put("menu", menu) //////
 
+        val whereClause = "RestaurantID=?"
         val whereArgs = arrayOf(ResID.toString())
 
-        var result = db.update("Restaurant", cv, "RestaurantID = ?", whereArgs)
+        var result = db.update("NewRequests", cv, whereClause, whereArgs)
 
-        if (result == -1)
+        if (result == -1)/////
             Toast.makeText(context, "Request insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Request inserted successfully!", Toast.LENGTH_SHORT).show()
@@ -224,6 +225,8 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             }
             while (result.moveToNext())
         }
+        db.close()
+
         return list
     }
 

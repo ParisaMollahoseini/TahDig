@@ -59,6 +59,7 @@ class seller_main : AppCompatActivity() {
             //////////////////////////////////
             sellertitle_toolbar.setTitle(username1)
             result.close()
+            db.close()
 
             sellertitle_toolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
@@ -93,7 +94,10 @@ class seller_main : AppCompatActivity() {
             "Yes"
         ) { dialog, id ->
             // User clicked Update Now button
-
+            val context = this
+            val db = DatabaseHandler(context).writableDatabase
+            db.delete("Loggedperson", null, null)
+            db.close()
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
             intent1.putExtra("data_array",map_data)
             startActivity(intent1)
