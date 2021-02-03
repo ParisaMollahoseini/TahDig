@@ -54,10 +54,10 @@ class restaurant_register : AppCompatActivity() {
                 if (res_addr != -1.toLong())
                 {
                     val query = "Select * from Loggedperson"
-//                    val result = db.rawQuery(query, null)
-//                    result.moveToFirst()
-//                    val ownerUsername = result.getString(result.getColumnIndex("username"))
-//                    db.insertNewRequests(resName,ownerUsername,resbusinessLicenseNumber,resPhone,res_addr.toInt())
+                    val result = db.readableDatabase.rawQuery(query, null)
+                    result.moveToFirst()
+                    val ownerUsername = result.getString(result.getColumnIndex("username"))
+                    db.insertNewRequests(resName,ownerUsername,resbusinessLicenseNumber,resPhone,res_addr.toInt())
                 }
 
                 /// add registration request
