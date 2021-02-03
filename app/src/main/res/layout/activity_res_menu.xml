@@ -35,7 +35,7 @@
             android:columnCount="1"
             android:orientation="vertical"
             android:padding="10dp"
-            android:rowCount="3"
+            android:rowCount="5"
             android:rowOrderPreserved="false"
             android:scrollbars="vertical"
             android:verticalScrollbarPosition="right">
@@ -48,11 +48,11 @@
 
                 <EditText
 
-                    android:id="@+id/state_id"
+                    android:id="@+id/food_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="state_id"
+                    android:hint="FoodName"
                     android:textColor="@color/black"
                     android:textColorHint="#717171" />
 
@@ -82,7 +82,7 @@
                 android:id="@+id/linearLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_row="0"
+                android:layout_row="1"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
@@ -102,14 +102,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/background"
                     android:text="Delete" />
-                <Button
-                    android:id="@+id/menu_update"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/background"
-                    android:text="Update" />
+
 
             </LinearLayout>
 
@@ -117,7 +110,7 @@
                 android:id="@+id/divider_admin_req_list"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:layout_row="1"
+                android:layout_row="2"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
 
@@ -129,10 +122,29 @@
                 android:id="@+id/menu_listView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_row="2"
+                android:layout_row="3"
                 android:choiceMode="multipleChoice"
                 android:divider="@color/main"
                 android:dividerHeight="2dp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="4"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/menu_accept"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/background"
+                    android:foregroundGravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:text="Accept" />
+            </LinearLayout>
         </GridLayout>
     </ScrollView>
 </RelativeLayout>
