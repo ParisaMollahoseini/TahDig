@@ -97,6 +97,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "Address insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Address successfully inserted", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
@@ -115,6 +116,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "user insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "user successfully inserted", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
@@ -144,7 +146,6 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         cv.put("username", username)
         cv.put("password", password)
 
-
         var result = db.insert("Loggedperson", null, cv)
         db.close()
     }
@@ -171,6 +172,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "Restaurant insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Restaurant inserted successfully!", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
@@ -190,6 +192,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "Request insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Request inserted successfully!", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
@@ -206,6 +209,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "Menu insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Menu inserted successfully!", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
@@ -226,7 +230,6 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             while (result.moveToNext())
         }
         db.close()
-
         return list
     }
 
@@ -261,12 +264,14 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "LoggedRestaurants insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "LoggedRestaurants inserted successfully!", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
     fun deleteFromLoggedRestaurants(){
         val db = this.writableDatabase
         db.delete("LoggedRestaurants",null,null)
+        db.close()
     }
 
     fun readDatareq(): MutableList<requestlist> {
@@ -294,6 +299,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
     fun DeleteFromNewRequests() {
         val db = this.writableDatabase
         db.delete("NewRequests",null,null)
+        db.close()
     }
 
 }
