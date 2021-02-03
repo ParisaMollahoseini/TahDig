@@ -66,12 +66,13 @@ class seller_main : AppCompatActivity() {
             result.close()
 
             ///from restaurant
-            val q = "Select * from LoggedRestaurants"
-            val res = db.rawQuery(q, null)
-            res.moveToFirst()
-            val res_name = res.getString(res.getColumnIndex("name"))
-            seller_title.text = res_name
-            res.close()
+
+//            val q = "Select * from LoggedRestaurants"
+//            val res = db.rawQuery(q, null)
+//            res.moveToFirst()
+//            val res_name = res.getString(res.getColumnIndex("name"))
+//            seller_title.text = res_name
+//            res.close()
 
             ///from restaurant
 
