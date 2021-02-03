@@ -17,8 +17,6 @@ class seller_main : AppCompatActivity() {
 
         ///////////////////////////// sth like in admin for restaurant list
 //
-//        val intent1 = Intent(this,request_list::class.java)
-//
 //        //check number of req
 //        var req_num = 0
 //        //check number of req

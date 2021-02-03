@@ -38,7 +38,7 @@ class login_signup2 : AppCompatActivity() {
                 {
                     flag = 1
                     Toast.makeText( this,"You are logged in successfully...", Toast.LENGTH_SHORT).show()
-                    db.insertLoggedperson(Username.toString(),Password.toString())
+                    db.insertLoggedperson(Username.text.toString(),Password.text.toString())
                     /////////////////////
                     var ResList = db.findRestaurants(Username.text.toString())
                     for (j in 0 until ResList.size)
