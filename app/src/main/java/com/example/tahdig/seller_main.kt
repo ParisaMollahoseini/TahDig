@@ -19,7 +19,7 @@ class seller_main : AppCompatActivity() {
         //res num
         val intent1_3 = intent
         val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
-        val res_num =1// map_data["res_no"].toString().toInt()
+        val res_num = map_data["res_no"].toString().toInt()
         //res num
 
 
