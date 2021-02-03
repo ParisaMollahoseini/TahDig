@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             val intent11 = intent
             val map_data : HashMap<String, String>
             if (getIntent().getSerializableExtra("data_array") != null)
-                map_data = intent11.getSerializableExtra("data_array")as HashMap<String, String>
+                map_data = getIntent().getSerializableExtra("data_array")as HashMap<String, String>
             else
                 map_data  = HashMap()
 
@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
                 val username1 = result.getString(result.getColumnIndex("username"))
                 val password1 = result.getString(result.getColumnIndex("password"))
 
+                Toast.makeText(this, "size:$num", Toast.LENGTH_SHORT).show()
 
                 //restaurant num
                 val data = db1.findRestaurants(username1)

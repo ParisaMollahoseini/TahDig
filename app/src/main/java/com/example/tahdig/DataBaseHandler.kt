@@ -143,6 +143,8 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         cv.put("username", username)
         cv.put("password", password)
 
+        db.delete("Loggedperson", null, null)
+        db.delete("LoggedRestaurants", null, null)
 
         var result = db.insert("Loggedperson", null, cv)
     }
