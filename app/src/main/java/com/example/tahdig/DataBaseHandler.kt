@@ -193,14 +193,13 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
     fun addMenu(ResID:Int, menu:String): Int {
         val db = this.writableDatabase
         val cv = ContentValues()
-        cv.put("menu", menu) //////
+        cv.put("menu", menu)
 
-        val whereClause = "RestaurantID=?"
         val whereArgs = arrayOf(ResID.toString())
 
-        var result = db.update("NewRequests", cv, whereClause, whereArgs)
+        var result = db.update("Restaurant", cv, "RestaurantID = ?", whereArgs)
 
-        if (result == -1)/////
+        if (result == -1)
             Toast.makeText(context, "Request insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Request inserted successfully!", Toast.LENGTH_SHORT).show()
@@ -216,7 +215,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         if (result.moveToFirst()) {
             do {
                 val res = AbstractRestaurant()
-                res.id = result.getInt(result.getColumnIndex("id")) //////
+                res.id = result.getInt(result.getColumnIndex("id"))
                 res.name = result.getString(result.getColumnIndex("name"))
                 res.menu = result.getString(result.getColumnIndex("menu"))
                 list.add(res)
