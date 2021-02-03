@@ -39,6 +39,8 @@ class request_list : AppCompatActivity() {
         //get list of req
 
         //add list of req to ui
+
+
         val context = this
         val db = DatabaseHandler(context)
 
