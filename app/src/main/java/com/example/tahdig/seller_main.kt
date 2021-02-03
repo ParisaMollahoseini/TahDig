@@ -99,9 +99,9 @@ class seller_main : AppCompatActivity() {
         ) { dialog, id ->
             // User clicked Update Now button
             val context = this
-            val db = DatabaseHandler(context).writableDatabase
-            db.delete("Loggedperson", null, null)
-            db.close()
+            val db = DatabaseHandler(context)
+            db.deletefromLoggedperson()
+            db.deleteFromLoggedRestaurants()
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
             intent1.putExtra("data_array",map_data)
             startActivity(intent1)
