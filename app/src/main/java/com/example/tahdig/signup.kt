@@ -17,7 +17,12 @@ class signup : AppCompatActivity() {
         val intent2 = Intent(this,login_signup2::class.java)
         val db = DatabaseHandler(this)
 
+        val intent1_3 = intent
+        val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
+
+
         registertitle_toolbar.setNavigationOnClickListener(View.OnClickListener() {
+            intent2.putExtra("data_array",map_data)
             startActivity(intent2)
         });
         accept_signup_button.setOnClickListener {
@@ -31,6 +36,8 @@ class signup : AppCompatActivity() {
                 {
                     Toast.makeText( this,"You are signed up successfully with id: "+res_addr.toString(), Toast.LENGTH_SHORT).show()
                     db.insertLoggedperson(username.text.toString(),password.text.toString())
+                    map_data.put("res_no","0")
+                    intent1.putExtra("data_array",map_data)
                     startActivity(intent1)
                 }
             }

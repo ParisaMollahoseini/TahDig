@@ -16,11 +16,14 @@ class login_signup2 : AppCompatActivity() {
         val intent3 = Intent(this,seller_main::class.java)
         val intent4 = Intent(this,admin_main::class.java)
 
-        logintitle_toolbar.setNavigationOnClickListener(View.OnClickListener() {
-            startActivity(intent2)
-        });
         val intent1_3 = intent
         val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
+
+        logintitle_toolbar.setNavigationOnClickListener(View.OnClickListener() {
+            map_data.put("res_no","0")
+            intent2.putExtra("data_array",map_data)
+            startActivity(intent2)
+        });
 
         accept_button.setOnClickListener {
             val context = this

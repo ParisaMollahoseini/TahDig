@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             }
             else
             {
-
+                map_data.put("res_no","0")
                     intent1.putExtra("data_array",map_data)
                 startActivity(intent1)
             }
