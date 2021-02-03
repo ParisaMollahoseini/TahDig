@@ -1,0 +1,73 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_relative_seller"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/sellertitle_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/main"
+        android:foregroundTint="@color/white"
+        android:minHeight="70dp"
+        android:navigationIcon="?attr/homeAsUpIndicator"
+        app:contentInsetStartWithNavigation="50dp"
+        app:menu="@menu/seller_menu"
+
+        app:title="Seller HomePage"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.menu"
+        app:titleTextColor="@color/white" />
+    <ScrollView
+        android:id="@+id/scrollStart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:fillViewport="true"
+        android:layout_below="@+id/sellertitle_toolbar"
+        android:focusable="auto">
+
+        <GridLayout
+            android:id="@+id/grid_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F7FAF9"
+            android:columnCount="1"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:rowCount="1"
+            android:rowOrderPreserved="false"
+            android:scrollbars="vertical"
+            android:verticalScrollbarPosition="right">
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:layout_row="0"
+                android:layout_gravity="fill_horizontal"
+                android:layout_marginLeft="10dp"
+
+                android:layout_marginTop="100dp"
+                android:layout_marginRight="10dp"
+
+                android:background="@drawable/edittext"
+                android:gravity="left"
+                android:text="@string/no_restaurant"
+                android:textColor="@color/main"
+                android:textSize="30sp"
+                android:textStyle="normal" />
+
+
+        </GridLayout>
+    </ScrollView>
+
+</RelativeLayout>

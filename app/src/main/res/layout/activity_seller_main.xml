@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_relative"
+    android:id="@+id/layout_relative_seller"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -45,13 +45,14 @@
         android:scrollbars="vertical"
         android:verticalScrollbarPosition="right">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_row="0"
-        android:alpha="1"
-        android:background="@drawable/shabneshin" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_row="0"
+            android:alpha="1"
+            android:background="@drawable/shabneshin"
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/title"
@@ -65,7 +66,7 @@
 
             android:layout_marginRight="5dp"
             android:gravity="center_horizontal"
-            android:text="Shabneshin restaurant"
+            android:text="Shabneshin Restaurant"
             android:textColor="@color/main"
 
             android:textSize="30sp"

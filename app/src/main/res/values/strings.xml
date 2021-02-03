@@ -17,10 +17,10 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="login">Login</string>
     <string name="title_activity_admin_main">admin_main</string>
+    <string name="no_restaurant">There is <i> no </i> registered restaurant. Click to add restaurant.</string>
 </resources>
