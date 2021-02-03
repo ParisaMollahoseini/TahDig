@@ -39,6 +39,15 @@ class login_signup2 : AppCompatActivity() {
                     flag = 1
                     Toast.makeText( this,"You are logged in successfully...", Toast.LENGTH_SHORT).show()
                     db.insertLoggedperson(Username.toString(),Password.toString())
+                    /////////////////////
+//                    var ResList = db.findRestaurants(Username.toString())
+//                    for (j in 0 until ResList.size)
+//                    {
+//                            Toast.makeText( this,"You are logged in successfully...", Toast.LENGTH_SHORT).show()
+//                            db.insertLoggedRestaurants(ResList[j].id, ResList[j].)
+//                    }
+//                    }
+//                    db.insertLoggedRestaurants()
                     startActivity(intent3)
                 }
             }

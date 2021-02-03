@@ -63,7 +63,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         db?.execSQL(createTableNewRequests)
 
         val createTableLoggedRestaurants = "CREATE TABLE LoggedRestaurants " +
-                "(id INTEGER," +
+                "(id INTEGER PRIMARY KEY," +
                 "name VARCHAR(50)," +
                 "menu VARCHAR(100))"
 

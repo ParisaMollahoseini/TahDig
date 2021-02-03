@@ -16,18 +16,18 @@ class seller_main : AppCompatActivity() {
         setContentView(R.layout.activity_seller_main)
 
         /////////////////////////////
-
-        val intent1 = Intent(this,request_list::class.java)
-
-        //check number of req
-        var req_num = 0
-        //check number of req
-
-        req_title.text = req_title.text.toString() + req_num.toString() + "\nClick for more detail"
-
-        req_title.setOnClickListener {
-            startActivity(intent1)
-        }
+//
+//        val intent1 = Intent(this,request_list::class.java)
+//
+//        //check number of req
+//        var req_num = 0
+//        //check number of req
+//
+//        req_title.text = req_title.text.toString() + req_num.toString() + "\nClick for more detail"
+//
+//        req_title.setOnClickListener {
+//            startActivity(intent1)
+//        }
 
         //////////////////////////////////
 

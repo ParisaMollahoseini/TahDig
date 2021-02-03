@@ -30,7 +30,7 @@ class signup : AppCompatActivity() {
                 if(res_user != -1.toLong())
                 {
                     Toast.makeText( this,"You are signed up successfully with id: "+res_addr.toString(), Toast.LENGTH_SHORT).show()
-
+                    db.insertLoggedperson(username.text.toString(),password.text.toString())
                     startActivity(intent1)
                 }
             }
