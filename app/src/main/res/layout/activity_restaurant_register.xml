@@ -1,0 +1,388 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_relative"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/res_registertitle_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/main"
+        android:minHeight="70dp"
+        android:navigationIcon="?attr/homeAsUpIndicator"
+        app:contentInsetStartWithNavigation="50dp"
+        app:navigationIcon="@drawable/ic_action_name"
+        app:title="Register"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:titleTextColor="@color/white" />
+    <ScrollView
+        android:id="@+id/res_register_scroll"
+        android:layout_below="@id/res_registertitle_toolbar"
+        style="@android:style/Widget.Holo.Light.ScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:fillViewport="true">
+
+
+        <GridLayout
+            android:id="@+id/res_register_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFF"
+            android:columnCount="1"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:rowCount="10"
+            android:rowOrderPreserved="false"
+            android:scrollbars="vertical"
+            android:verticalScrollbarPosition="right">
+
+            <LinearLayout
+                android:id="@+id/name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+
+                android:layout_marginTop="50dp"
+                android:dividerPadding="0dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/res_register_name_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+
+                    android:text="Name: "
+                    android:textColor="@color/cardview_dark_background"
+                    android:textIsSelectable="false"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/res_register_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@drawable/edittext"
+                    android:hint="parisa"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/username_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+
+                android:layout_marginTop="15dp"
+                android:dividerPadding="0dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/username_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+
+                    android:text="Username: "
+                    android:textColor="@color/cardview_dark_background"
+
+                    android:textIsSelectable="false"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@drawable/edittext"
+                    android:hint="pm"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/password_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+
+                android:layout_marginTop="15dp"
+                android:dividerPadding="0dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/password_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Password: "
+
+                    android:textColor="@color/cardview_dark_background"
+
+                    android:textIsSelectable="false"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@drawable/edittext"
+                    android:hint="Enter password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Address_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="3"
+
+                android:layout_marginTop="15dp"
+                android:dividerPadding="0dp"
+                android:gravity="center_horizontal|left"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Address_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Address: "
+
+                    android:textColor="@color/cardview_dark_background"
+                    android:textIsSelectable="false"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_row="4"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="230dp"
+                android:layout_marginBottom="1dp"
+
+                android:background="@color/main" />
+            <LinearLayout
+                android:id="@+id/city_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="5"
+
+                android:layout_marginTop="15dp"
+                android:dividerPadding="0dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/city_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+
+                    android:layout_weight="1.5"
+                    android:text="City: "
+
+                    android:textColor="@color/cardview_dark_background"
+                    android:textIsSelectable="false"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/city_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="fill_vertical"
+                    android:layout_weight="2"
+                    android:background="@drawable/edittext"
+                    android:fadeScrollbars="false"
+                    android:gravity="top"
+                    android:hint="isfahan"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="2dp"
+                    android:scrollbarSize="10dp"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/street_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="6"
+
+                android:layout_marginTop="15dp"
+                android:dividerPadding="0dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/street_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+
+
+                    android:layout_weight="1.5"
+                    android:text="Street: "
+                    android:textColor="@color/cardview_dark_background"
+                    android:textIsSelectable="false"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/street_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="fill_vertical"
+                    android:layout_weight="2"
+                    android:background="@drawable/edittext"
+                    android:fadeScrollbars="false"
+                    android:gravity="top"
+                    android:hint="saadarabad"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="2dp"
+                    android:scrollbarSize="10dp"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/alley_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="7"
+
+                android:layout_marginTop="15dp"
+                android:dividerPadding="0dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/alley_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+
+                    android:layout_weight="1.5"
+                    android:text="Alley: "
+
+                    android:textColor="@color/cardview_dark_background"
+                    android:textIsSelectable="false"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/alley_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="fill_vertical"
+                    android:layout_weight="2"
+                    android:background="@drawable/edittext"
+                    android:fadeScrollbars="false"
+                    android:gravity="top"
+                    android:hint="farhadi"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="2dp"
+                    android:scrollbarSize="10dp"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/number_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="8"
+
+                android:layout_marginTop="15dp"
+                android:dividerPadding="0dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5"
+
+                    android:text="PostalCode: "
+
+                    android:textColor="@color/cardview_dark_background"
+                    android:textIsSelectable="false"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/number_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="fill_vertical"
+                    android:layout_weight="2"
+                    android:background="@drawable/edittext"
+                    android:fadeScrollbars="false"
+                    android:gravity="top"
+                    android:hint="12354..."
+                    android:inputType="number"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="2dp"
+                    android:scrollbarSize="10dp"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/accept_signup_button_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_row="9"
+
+                android:layout_marginTop="50dp"
+                android:dividerPadding="0dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/accept_signup_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button"
+                    android:text="Accept"
+                    android:textColor="#FFFFFF"
+                    android:typeface="normal" />
+            </LinearLayout>
+
+        </GridLayout>
+    </ScrollView>
+</RelativeLayout>
