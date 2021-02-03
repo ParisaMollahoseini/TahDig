@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
 
         start_button.setOnClickListener {
             val context = this
-            val db = DatabaseHandler(context).readableDatabase
+            val db1 = DatabaseHandler(context)
+            val db  = db1.readableDatabase
             val num = DatabaseUtils.queryNumEntries(db, "Loggedperson")
-
             if (num != 0.toLong())
             {
                 val query = "Select * from Loggedperson"
@@ -30,11 +30,26 @@ class MainActivity : AppCompatActivity() {
                 result.moveToFirst()
                 val username1 = result.getString(result.getColumnIndex("username"))
                 val password1 = result.getString(result.getColumnIndex("password"))
-                result.close()
-                if( username1.equals("admin") && password1.equals("1234"))
-                    startActivity(intent2)
+
+                var map_data : HashMap<String, String> = HashMap()
+
+                //restaurant num
+                val data = db1.findRestaurants(username1)
+                if (data.size == 0 )
+                    map_data.put("res_no","0")
                 else
+                    map_data.put("res_no","1")
+                //restaurant num
+
+                result.close()
+                if( username1.equals("admin") && password1.equals("1234")) {
+                    startActivity(intent2)
+
+                }
+                else {
+                    intent3.putExtra("data_array",map_data)
                     startActivity(intent3)
+                }
             }
             else
             {

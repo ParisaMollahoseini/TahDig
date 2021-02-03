@@ -1,15 +1,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_relative_seller"
+    android:id="@+id/layout_relative_seller_norest"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".MainActivity">
+    >
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/sellertitle_toolbar"
+        android:id="@+id/sellertitle_toolbar_norest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -24,16 +24,16 @@
         app:titleTextAppearance="@style/TextAppearance.AppCompat.menu"
         app:titleTextColor="@color/white" />
     <ScrollView
-        android:id="@+id/scrollStart"
+        android:id="@+id/scrollStart_norest"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="true"
         android:fillViewport="true"
-        android:layout_below="@+id/sellertitle_toolbar"
+        android:layout_below="@+id/sellertitle_toolbar_norest"
         android:focusable="auto">
 
         <GridLayout
-            android:id="@+id/grid_start"
+            android:id="@+id/grid_start_norest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F7FAF9"
@@ -47,7 +47,7 @@
 
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/title_norest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -61,6 +61,8 @@
 
                 android:background="@drawable/edittext"
                 android:gravity="left"
+                android:paddingLeft="10dp"
+                android:paddingRight="5dp"
                 android:text="@string/no_restaurant"
                 android:textColor="@color/main"
                 android:textSize="30sp"

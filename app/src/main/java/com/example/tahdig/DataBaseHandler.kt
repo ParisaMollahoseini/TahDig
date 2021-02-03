@@ -207,17 +207,18 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         return result
     }
 
-    fun findRestaurants(ownerUsername:String): MutableList<AbstractRestaurant> {
+    fun findRestaurants(ownerUsername1:String): MutableList<AbstractRestaurant> {
         val list: MutableList<AbstractRestaurant> = ArrayList()
         val db = this.readableDatabase
-        val query = "Select * from Restaurant where ownerUsername = $ownerUsername" ///////////
-        val result = db.rawQuery(query, null)
+
+        val query = "SELECT * FROM 'Restaurant' WHERE 'ownerUsername' = ?" ///////////
+        val result = db.rawQuery(query, arrayOf(ownerUsername1))
         if (result.moveToFirst()) {
             do {
                 val res = AbstractRestaurant()
                 res.id = result.getInt(result.getColumnIndex("id")) //////
                 res.name = result.getString(result.getColumnIndex("name"))
-                res.menu = result.getString(result.getColumnIndex("password"))
+                res.menu = result.getString(result.getColumnIndex("menu"))
                 list.add(res)
             }
             while (result.moveToNext())

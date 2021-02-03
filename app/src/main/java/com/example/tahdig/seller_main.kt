@@ -9,47 +9,69 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_admin_main.*
 import kotlinx.android.synthetic.main.activity_seller_main.*
 import kotlinx.android.synthetic.main.activity_login_signup2.*
+import kotlinx.android.synthetic.main.activity_seller_main.sellertitle_toolbar
+import kotlinx.android.synthetic.main.seller_no_restaurant.*
 
 class seller_main : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_seller_main)
 
         ///////////////////////////// sth like in admin for restaurant list
-//
-//        //check number of req
-//        var req_num = 0
-//        //check number of req
-//
-//        req_title.text = req_title.text.toString() + req_num.toString() + "\nClick for more detail"
-//
-//        req_title.setOnClickListener {
-//            startActivity(intent1)
-//        }
+        //res num
+        val intent1_3 = intent
+        val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
+        val res_num = 1//map_data["res_no"].toString().toInt()
+        //res num
 
-        //////////////////////////////////
-        val context = this
-        val db = DatabaseHandler(context).readableDatabase
 
-        val query = "Select * from Loggedperson"
-        val result = db.rawQuery(query, null)
-        result.moveToFirst()
-        val username1 = result.getString(result.getColumnIndex("username"))
+        if (res_num == 0) {
 
-        sellertitle_toolbar.setTitle(username1)
-        result.close()
+            setContentView(R.layout.seller_no_restaurant)
+            val context = this
+            val db = DatabaseHandler(context).readableDatabase
 
-        sellertitle_toolbar.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.action_seller_logout -> {
-                    onAlertDialog(sellertitle_toolbar)
-                    return@setOnMenuItemClickListener true
+            val query = "Select * from Loggedperson"
+            val result = db.rawQuery(query, null)
+            result.moveToFirst()
+            val username1 = result.getString(result.getColumnIndex("username"))
+            sellertitle_toolbar_norest.setTitle(username1)
+            result.close()
+
+            sellertitle_toolbar_norest.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_seller_logout_norest -> {
+                        onAlertDialog(sellertitle_toolbar_norest)
+                        return@setOnMenuItemClickListener true
+                    }
+
                 }
-
+                return@setOnMenuItemClickListener false
             }
-            return@setOnMenuItemClickListener false
         }
+            else {
+            setContentView(R.layout.activity_seller_main)
+            val context = this
+            val db = DatabaseHandler(context).readableDatabase
 
+            val query = "Select * from Loggedperson"
+            val result = db.rawQuery(query, null)
+            result.moveToFirst()
+            val username1 = result.getString(result.getColumnIndex("username"))
+            //////////////////////////////////
+            sellertitle_toolbar.setTitle(username1)
+            result.close()
+
+            sellertitle_toolbar.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_seller_logout -> {
+                        onAlertDialog(sellertitle_toolbar)
+                        return@setOnMenuItemClickListener true
+                    }
+
+                }
+                return@setOnMenuItemClickListener false
+            }
+        }
     }
 
     fun onAlertDialog(view: View) {
@@ -69,10 +91,10 @@ class seller_main : AppCompatActivity() {
             "Yes"
         ) { dialog, id ->
             // User clicked Update Now button
-            val context = this
-            val db = DatabaseHandler(context)
-            db.deletefromLoggedperson()
-            db.deleteFromLoggedRestaurants()
+//            val context = this
+//            val db = DatabaseHandler(context)
+//            db.deletefromLoggedperson()
+//            db.deleteFromLoggedRestaurants()
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
 
             startActivity(intent1)

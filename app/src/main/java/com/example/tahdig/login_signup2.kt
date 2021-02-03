@@ -25,7 +25,10 @@ class login_signup2 : AppCompatActivity() {
             val db = DatabaseHandler(context)
 
             val data = db.readDatauser()
+
             var flag = 0
+            val intent1_3 = intent
+            val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
 
             if(Username.text.toString().equals("admin") && Password.text.toString().equals("1234"))
             {
@@ -48,6 +51,14 @@ class login_signup2 : AppCompatActivity() {
                     }
                     Toast.makeText( this,"All restaurants added successfully...", Toast.LENGTH_SHORT).show()
                     ////////////////////////////////////
+                    //restaurant num
+                    val data1 = db.findRestaurants(data[i].username)
+                    if (data1.size == 0 )
+                        map_data.put("res_no","0")
+                    else
+                        map_data.put("res_no","1")
+                    //restaurant num
+                    intent3.putExtra("data_array",map_data)
                     startActivity(intent3)
                 }
             }
