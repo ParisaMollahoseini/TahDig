@@ -66,10 +66,13 @@ class seller_main : AppCompatActivity() {
             db.close()
 
             ///from restaurant
-
-            seller_title.text = "resname"
-
+            val q = "Select * from LoggedRestaurants"
+            val res = db.rawQuery(query, null)
+            res.moveToFirst()
+            val resName = res.getString(res.getColumnIndex("name"))
+            seller_title.text = resName
             ///from restaurant
+
             sellertitle_toolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_seller_logout -> {

@@ -42,9 +42,13 @@ class restaurant_register : AppCompatActivity() {
             builder.setPositiveButton(
                 "Yes"
             ) { dialog, id ->
-                /// add registration request
 
                 /// add registration request
+//                val context = this
+//                val db = DatabaseHandler(context)
+//                db.insertNewRequests()
+                /// add registration request
+
                 intent1.putExtra("data_array",map_data)
                 startActivity(intent1)
             }
