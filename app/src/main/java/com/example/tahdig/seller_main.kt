@@ -16,7 +16,6 @@ class seller_main : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        ///////////////////////////// sth like in admin for restaurant list
         //res num
         val intent1_3 = intent
         val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
