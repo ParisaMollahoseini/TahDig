@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
                 //restaurant num
                 val data = db1.findRestaurants(username1)
+
                 if (data.size == 0 )
                     map_data.put("res_no","0")
                 else

@@ -64,16 +64,17 @@ class seller_main : AppCompatActivity() {
             //////////////////////////////////
             sellertitle_toolbar.setTitle(username1)
             result.close()
+            db.close()
 
             ///from restaurant
-
+//            val db1 = DatabaseHandler(context).readableDatabase
 //            val q = "Select * from LoggedRestaurants"
-//            val res = db.rawQuery(q, null)
+//            val res = db1.rawQuery(q, null)
 //            res.moveToFirst()
 //            val res_name = res.getString(res.getColumnIndex("name"))
 //            seller_title.text = res_name
 //            res.close()
-
+//            db1.close()
             ///from restaurant
 
 
