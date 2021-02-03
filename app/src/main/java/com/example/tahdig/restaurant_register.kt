@@ -60,4 +60,3 @@ class restaurant_register : AppCompatActivity() {
         }
         }
     }
-}
