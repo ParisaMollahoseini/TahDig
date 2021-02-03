@@ -97,6 +97,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "Address insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Address successfully inserted", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
@@ -115,6 +116,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "user insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "user successfully inserted", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
@@ -144,7 +146,6 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         cv.put("username", username)
         cv.put("password", password)
 
-
         var result = db.insert("Loggedperson", null, cv)
         db.close()
     }
@@ -152,6 +153,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
     fun deletefromLoggedperson(){
         val db = this.writableDatabase
         db.delete("Loggedperson",null,null)
+        db.close()
     }
 
     fun insertRestaurant(name:String,ownerUsername:String,businessLicenseNumber:String,phoneNumber:String,addressID:Int): Long {
@@ -170,6 +172,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "Restaurant insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Restaurant inserted successfully!", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
@@ -189,23 +192,24 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "Request insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "Request inserted successfully!", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
     fun addMenu(ResID:Int, menu:String): Int {
         val db = this.writableDatabase
         val cv = ContentValues()
-        cv.put("menu", menu) //////
+        cv.put("menu", menu)
 
-        val whereClause = "RestaurantID=?"
         val whereArgs = arrayOf(ResID.toString())
 
-        var result = db.update("NewRequests", cv, whereClause, whereArgs)
+        var result = db.update("Restaurant", cv, "RestaurantID = ?", whereArgs)
 
-        if (result == -1)/////
-            Toast.makeText(context, "Request insertion failed", Toast.LENGTH_SHORT).show()
+        if (result == -1)
+            Toast.makeText(context, "Menu insertion failed", Toast.LENGTH_SHORT).show()
         else
-            Toast.makeText(context, "Request inserted successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Menu inserted successfully!", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
@@ -226,27 +230,8 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             while (result.moveToNext())
         }
         db.close()
-
         return list
     }
-
-//    fun findRequests(ownerUsername:String): MutableList<AbstractRestaurant> {
-//        val list: MutableList<AbstractRestaurant> = ArrayList()
-//        val db = this.readableDatabase
-//        val query = "Select * from NewRequests where ownerUsername = $ownerUsername" ///////////
-//        val result = db.rawQuery(query, null)
-//        if (result.moveToFirst()) {
-//            do {
-//                val res = AbstractRestaurant()
-//                res.id = result.getInt(result.getColumnIndex("id")) //////
-//                res.name = result.getString(result.getColumnIndex("name"))
-//                res.menu = result.getString(result.getColumnIndex("password"))
-//                list.add(res)
-//            }
-//            while (result.moveToNext())
-//        }
-//        return list
-//    }
 
     fun insertLoggedRestaurants(resID:Int,name:String,menu:String): Long {
         val db = this.writableDatabase
@@ -261,12 +246,14 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
             Toast.makeText(context, "LoggedRestaurants insertion failed", Toast.LENGTH_SHORT).show()
         else
             Toast.makeText(context, "LoggedRestaurants inserted successfully!", Toast.LENGTH_SHORT).show()
+        db.close()
         return result
     }
 
     fun deleteFromLoggedRestaurants(){
         val db = this.writableDatabase
         db.delete("LoggedRestaurants",null,null)
+        db.close()
     }
 
     fun readDatareq(): MutableList<requestlist> {
@@ -294,6 +281,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
     fun DeleteFromNewRequests() {
         val db = this.writableDatabase
         db.delete("NewRequests",null,null)
+        db.close()
     }
 
 }
