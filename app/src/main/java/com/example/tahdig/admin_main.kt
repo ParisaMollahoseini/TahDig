@@ -68,7 +68,6 @@ class admin_main : AppCompatActivity() {
             val db = DatabaseHandler(context)
             db.deletefromLoggedperson()
             db.deleteFromLoggedRestaurants()
-            db.close()
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
             intent1.putExtra("data_array",map_data)
             startActivity(intent1)

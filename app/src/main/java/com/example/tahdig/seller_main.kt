@@ -63,7 +63,6 @@ class seller_main : AppCompatActivity() {
             //////////////////////////////////
             sellertitle_toolbar.setTitle(username1)
             result.close()
-            db.close()
 
             ///from restaurant
             val q = "Select * from LoggedRestaurants"
