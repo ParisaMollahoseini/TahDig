@@ -154,7 +154,8 @@
                     android:inputType="numberDecimal"
                     android:paddingLeft="2dp"
                     android:paddingRight="2dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray" />
             </LinearLayout>
 
             <LinearLayout

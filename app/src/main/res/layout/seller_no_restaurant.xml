@@ -59,13 +59,14 @@
                 android:layout_marginTop="100dp"
                 android:layout_marginRight="10dp"
 
-                android:background="@drawable/edittext"
+                android:background="@drawable/button_pressed"
+                android:fontFamily="serif"
                 android:gravity="left"
                 android:paddingLeft="10dp"
                 android:paddingRight="5dp"
                 android:text="@string/no_restaurant"
-                android:textColor="@color/main"
-                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:textSize="25dp"
                 android:textStyle="normal" />
 
 

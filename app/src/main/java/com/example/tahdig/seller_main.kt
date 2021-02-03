@@ -26,6 +26,7 @@ class seller_main : AppCompatActivity() {
         if (res_num == 0) {
 
             setContentView(R.layout.seller_no_restaurant)
+            val intent2 = Intent(this, restaurant_register::class.java)
             val context = this
             val db = DatabaseHandler(context).readableDatabase
 
@@ -45,6 +46,10 @@ class seller_main : AppCompatActivity() {
 
                 }
                 return@setOnMenuItemClickListener false
+            }
+            title_norest.setOnClickListener {
+                intent2.putExtra("data_array",map_data)
+                startActivity(intent2)
             }
         }
             else {
