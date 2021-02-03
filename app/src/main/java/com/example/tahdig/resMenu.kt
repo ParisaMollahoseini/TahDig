@@ -1,11 +1,14 @@
 package com.example.tahdig
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.SparseBooleanArray
+import android.view.View
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_res_menu.*
+import kotlinx.android.synthetic.main.activity_signup.*
 import java.sql.SQLException
 
 class resMenu : AppCompatActivity() {
@@ -14,6 +17,15 @@ class resMenu : AppCompatActivity() {
         setContentView(R.layout.activity_res_menu)
         var itemlist = arrayListOf<String>()
         var adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, itemlist)
+
+        val intent2 = Intent(this,seller_main::class.java)
+        val intent1_3 = intent
+        val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
+
+        menutitle_toolbar.setNavigationOnClickListener(View.OnClickListener() {
+            intent2.putExtra("data_array",map_data)
+            startActivity(intent2)
+        });
 
         menu_add.setOnClickListener {
 
@@ -67,6 +79,8 @@ class resMenu : AppCompatActivity() {
 
                     ///add to database
                 }
+            intent2.putExtra("data_array",map_data)
+            startActivity(intent2)
         }
     }
 }
