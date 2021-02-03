@@ -115,7 +115,7 @@
                 android:layout_marginTop="10dp"
 
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginBottom="20dp"
                 android:background="@color/main" />
 
             <ListView
@@ -123,10 +123,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_row="3"
+                android:background="@drawable/listbakc"
                 android:choiceMode="multipleChoice"
-                android:divider="@color/main"
-                android:dividerHeight="2dp"
-                android:outlineAmbientShadowColor="@color/black" />
+                android:divider="@color/white"
+                android:dividerHeight="2dp" />
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
