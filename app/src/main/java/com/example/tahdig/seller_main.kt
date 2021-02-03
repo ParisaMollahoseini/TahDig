@@ -15,7 +15,7 @@ class seller_main : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller_main)
 
-        /////////////////////////////
+        ///////////////////////////// sth like in admin for restaurant list
 //
 //        val intent1 = Intent(this,request_list::class.java)
 //
