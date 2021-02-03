@@ -71,6 +71,7 @@ class seller_main : AppCompatActivity() {
             seller_title.text = "resname"
 
             ///from restaurant
+            //add_menu1
             sellertitle_toolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_seller_logout -> {

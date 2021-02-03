@@ -73,7 +73,7 @@
             android:textStyle="bold|italic" />
 
         <Button
-            android:id="@+id/start_button"
+            android:id="@+id/add_menu1"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
 
