@@ -9,6 +9,7 @@ import android.util.SparseBooleanArray
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_admin_main.*
 import kotlinx.android.synthetic.main.activity_login_signup2.*
 import kotlinx.android.synthetic.main.activity_request_list.*
 import java.sql.SQLException
@@ -17,13 +18,18 @@ class request_list : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_list)
+
+        val intent1 = Intent(this,admin_main::class.java)
+
+        reqtitle_toolbar.setNavigationOnClickListener(View.OnClickListener() {
+            startActivity(intent1)
+        });
+
         var itemlist = arrayListOf<String>()
         var adapter =
             ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, itemlist)
 
-        //check number of req
-        var req_num = 0
-        //check number of req
+
         //get list of req
 
         //add list of req to ui

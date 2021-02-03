@@ -19,12 +19,18 @@ class admin_main : AppCompatActivity() {
         //check number of req
         var req_num = 0
         //check number of req
+        if (req_num == 0){
+            req_title.text = "There is no unchecked request"
 
-        req_title.text = req_title.text.toString() + req_num.toString() + "\nClick for more detail"
-
-        req_title.setOnClickListener {
-           startActivity(intent1)
         }
+        else{
+            req_title.text = req_title.text.toString() + req_num.toString() + "\nClick for more detail"
+
+            req_title.setOnClickListener {
+                startActivity(intent1)
+            }
+        }
+
 
         admintitle_toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
