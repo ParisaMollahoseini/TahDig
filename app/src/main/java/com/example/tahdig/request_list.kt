@@ -21,7 +21,12 @@ class request_list : AppCompatActivity() {
 
         val intent1 = Intent(this,admin_main::class.java)
 
+        val intent1_3 = intent
+        val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
+
+
         reqtitle_toolbar.setNavigationOnClickListener(View.OnClickListener() {
+            intent1.putExtra("data_array",map_data)
             startActivity(intent1)
         });
 
