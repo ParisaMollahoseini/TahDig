@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.PointerIcon
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_admin_main.*
@@ -25,7 +26,6 @@ class admin_main : AppCompatActivity() {
         }
         else{
             req_title.text = req_title.text.toString() + req_num.toString() + "\nClick for more detail"
-
             req_title.setOnClickListener {
                 startActivity(intent1)
             }
