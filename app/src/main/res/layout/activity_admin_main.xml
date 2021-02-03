@@ -65,6 +65,7 @@
 
             android:background="@drawable/edittext"
             android:paddingLeft="30dp"
+
             android:text="Numbers of unchecked requests is "
             android:textColor="@color/cardview_dark_background"
             android:textIsSelectable="false"
