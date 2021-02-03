@@ -2,6 +2,7 @@ package com.example.tahdig
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.database.DatabaseUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -35,28 +36,36 @@ class request_list : AppCompatActivity() {
         var adapter =
             ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, itemlist)
 
-
-        //get list of req
-
-        //add list of req to ui
-
-
         val context = this
         val db = DatabaseHandler(context)
 
-        listView.adapter = adapter
-        val data = db.readDatareq()
-        for (i in 0 until data.size) {
+        //get list of req
+        val db1  = db.readableDatabase
+        val num = DatabaseUtils.queryNumEntries(db1, "NewRequests")
 
-            itemlist.add(
-                "businessLicenseNumber: " + data[i].businessLicenseNumber +
-                        "\nowner name: " + data[i].ownerUsername + "\nphone number: " + data[i].phoneNumber
-                        + "\nAddress id: " + data[i].addressID
-            )
+        if (num != 0.toLong()) {
 
-            adapter.notifyDataSetChanged()
+            //add list of req to ui
+            listView.adapter = adapter
+            val data = db.readDatareq()
+            for (i in 0 until data.size) {
+
+                itemlist.add(
+                    "businessLicenseNumber: " + data[i].businessLicenseNumber +
+                            "\nowner name: " + data[i].ownerUsername + "\nphone number: " + data[i].phoneNumber
+                            + "\nAddress id: " + data[i].addressID
+                )
+
+                adapter.notifyDataSetChanged()
+            }
+            //add list of req to ui
         }
-        //add list of req to ui
+//
+//        else {
+//
+//            //there is no request
+//        }
+//
         accept.setOnClickListener {
             //Instantiate builder variable
             val view = listView
