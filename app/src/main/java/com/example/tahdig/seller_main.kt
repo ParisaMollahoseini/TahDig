@@ -43,6 +43,7 @@ class seller_main : AppCompatActivity() {
                         onAlertDialog(sellertitle_toolbar_norest)
                         return@setOnMenuItemClickListener true
                     }
+
                 }
                 return@setOnMenuItemClickListener false
             }
@@ -63,15 +64,14 @@ class seller_main : AppCompatActivity() {
             //////////////////////////////////
             sellertitle_toolbar.setTitle(username1)
             result.close()
+            db.close()
 
             ///from restaurant
-            val q = "Select * from LoggedRestaurants"
-            val res = db.rawQuery(query, null)
-            res.moveToFirst()
-            val resName = res.getString(res.getColumnIndex("name"))
-            seller_title.text = resName
-            ///from restaurant
 
+            seller_title.text = "resname"
+
+            ///from restaurant
+            //add_menu1
             sellertitle_toolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_seller_logout -> {
@@ -106,9 +106,8 @@ class seller_main : AppCompatActivity() {
         ) { dialog, id ->
             // User clicked Update Now button
             val context = this
-            val db = DatabaseHandler(context)
-            db.deletefromLoggedperson()
-            db.deleteFromLoggedRestaurants()
+            val db = DatabaseHandler(context).writableDatabase
+            db.delete("Loggedperson", null, null)
             db.close()
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
             intent1.putExtra("data_array",map_data)

@@ -30,8 +30,8 @@ class signup : AppCompatActivity() {
         });
         accept_signup_button.setOnClickListener {
 //Instantiate builder variable
-            val view = listView
-            val builder = AlertDialog.Builder(view.context)
+            val view = this
+            val builder = AlertDialog.Builder(view)
 
             // set title
             builder.setTitle("Alert")
