@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".restaurant_register"></activity>
+        <activity android:name=".resMenu"></activity>
+        <activity android:name=".restaurant_register" />
         <activity android:name=".request_list" />
         <activity android:name=".admin_main" />
         <activity android:name=".seller_main" />

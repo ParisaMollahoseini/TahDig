@@ -65,6 +65,11 @@ class seller_main : AppCompatActivity() {
             result.close()
             db.close()
 
+            ///from restaurant
+
+            seller_title.text = "resname"
+
+            ///from restaurant
             sellertitle_toolbar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_seller_logout -> {
