@@ -62,6 +62,7 @@ class login_signup2 : AppCompatActivity() {
                     else
                         map_data.put("res_no","1")
                     //restaurant num
+                    db.close()
                     intent3.putExtra("data_array",map_data)
                     startActivity(intent3)
                 }

@@ -55,6 +55,7 @@ class signup : AppCompatActivity() {
                         db.insertLoggedperson(username.text.toString(),password.text.toString())
                         map_data.put("res_no","0")
                         intent1.putExtra("data_array",map_data)
+                        db.close()
                         startActivity(intent1)
                     }
                 }

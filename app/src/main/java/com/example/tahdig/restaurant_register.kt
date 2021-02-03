@@ -42,6 +42,7 @@ class restaurant_register : AppCompatActivity() {
             builder.setPositiveButton(
                 "Yes"
             ) { dialog, id ->
+
                 /// add registration request
                 val resName = res_name.text.toString()
                 val resbusinessLicenseNumber = businessLicenseNumber.text.toString()
@@ -50,10 +51,15 @@ class restaurant_register : AppCompatActivity() {
                 val res_addr = db.insertAddress(res_city_text.text.toString(),res_street_text.text.toString(),res_alley_text.text.toString(),
                     res_number_text.text.toString().toInt())
                 //res_add >>> address id
-                if (res_addr != -1.toLong() )
+                if (res_addr != -1.toLong())
                 {
-
+                    val query = "Select * from Loggedperson"
+//                    val result = db.rawQuery(query, null)
+//                    result.moveToFirst()
+//                    val ownerUsername = result.getString(result.getColumnIndex("username"))
+//                    db.insertNewRequests(resName,ownerUsername,resbusinessLicenseNumber,resPhone,res_addr.toInt())
                 }
+
                 /// add registration request
                 intent1.putExtra("data_array",map_data)
                 startActivity(intent1)
