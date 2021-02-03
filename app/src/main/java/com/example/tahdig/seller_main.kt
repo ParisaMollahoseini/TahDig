@@ -43,7 +43,6 @@ class seller_main : AppCompatActivity() {
                         onAlertDialog(sellertitle_toolbar_norest)
                         return@setOnMenuItemClickListener true
                     }
-
                 }
                 return@setOnMenuItemClickListener false
             }
