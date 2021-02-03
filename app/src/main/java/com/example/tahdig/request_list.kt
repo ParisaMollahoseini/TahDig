@@ -65,10 +65,15 @@ class request_list : AppCompatActivity() {
                 while (item >= 0) {
                     if (position.get(item)) {
 
-
+                        //update accept request to database
+                        val data = db.readDatareq()
+                        for (j in 0 until data.size) {
+                            db.insertRestaurant(data[j].restaurant_name, data[j].ownerUsername,
+                                data[j].businessLicenseNumber,data[j].phoneNumber,data[j].addressID)
+                        }
+                            db.DeleteFromNewRequests()
                         ///update accept request to database
 
-                        ///update accept request to database
                         adapter.remove(itemlist.get(item))
 
                     }
@@ -117,7 +122,7 @@ class request_list : AppCompatActivity() {
 
 
                         ///update reject request to database
-
+                        db.DeleteFromNewRequests()
                         ///update reject request to database
                         adapter.remove(itemlist.get(item))
 
