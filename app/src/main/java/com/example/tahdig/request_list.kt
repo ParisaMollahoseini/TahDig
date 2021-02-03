@@ -66,9 +66,9 @@ class request_list : AppCompatActivity() {
                     if (position.get(item)) {
 
 
-                        ///update reject request to database
+                        ///update accept request to database
 
-                        ///update reject request to database
+                        ///update accept request to database
                         adapter.remove(itemlist.get(item))
 
                     }
@@ -76,6 +76,7 @@ class request_list : AppCompatActivity() {
                 }
                 position.clear()
                 adapter.notifyDataSetChanged()
+                Toast.makeText( this,"Selected requests accepted", Toast.LENGTH_SHORT).show()
 
 
             }
@@ -125,7 +126,7 @@ class request_list : AppCompatActivity() {
                 }
                 position.clear()
                 adapter.notifyDataSetChanged()
-
+                Toast.makeText( this,"Selected requests rejected", Toast.LENGTH_SHORT).show()
 
             }
 
