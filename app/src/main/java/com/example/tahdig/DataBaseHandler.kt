@@ -233,24 +233,6 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         return list
     }
 
-//    fun findRequests(ownerUsername:String): MutableList<AbstractRestaurant> {
-//        val list: MutableList<AbstractRestaurant> = ArrayList()
-//        val db = this.readableDatabase
-//        val query = "Select * from NewRequests where ownerUsername = $ownerUsername" ///////////
-//        val result = db.rawQuery(query, null)
-//        if (result.moveToFirst()) {
-//            do {
-//                val res = AbstractRestaurant()
-//                res.id = result.getInt(result.getColumnIndex("id")) //////
-//                res.name = result.getString(result.getColumnIndex("name"))
-//                res.menu = result.getString(result.getColumnIndex("password"))
-//                list.add(res)
-//            }
-//            while (result.moveToNext())
-//        }
-//        return list
-//    }
-
     fun insertLoggedRestaurants(resID:Int,name:String,menu:String): Long {
         val db = this.writableDatabase
         val cv = ContentValues()
