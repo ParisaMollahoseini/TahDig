@@ -54,6 +54,7 @@ class signup : AppCompatActivity() {
                         Toast.makeText( this,"You are signed up successfully with id: "+res_addr.toString(), Toast.LENGTH_SHORT).show()
                         db.insertLoggedperson(username.text.toString(),password.text.toString())
                         db.deleteFromLoggedRestaurants()
+                        db.close()
                         map_data.put("res_no","0")
                         intent1.putExtra("data_array",map_data)
                         startActivity(intent1)
