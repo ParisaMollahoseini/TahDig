@@ -18,7 +18,7 @@
         android:minHeight="70dp"
         android:navigationIcon="?attr/homeAsUpIndicator"
         app:contentInsetStartWithNavigation="50dp"
-        app:menu="@menu/seller_menu"
+        app:menu="@menu/seller_menu_2"
 
         app:title="Seller HomePage"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.menu"

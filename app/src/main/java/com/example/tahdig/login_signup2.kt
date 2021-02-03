@@ -19,6 +19,8 @@ class login_signup2 : AppCompatActivity() {
         logintitle_toolbar.setNavigationOnClickListener(View.OnClickListener() {
             startActivity(intent2)
         });
+        val intent1_3 = intent
+        val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
 
         accept_button.setOnClickListener {
             val context = this
@@ -27,13 +29,12 @@ class login_signup2 : AppCompatActivity() {
             val data = db.readDatauser()
 
             var flag = 0
-            val intent1_3 = intent
-            val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
 
             if(Username.text.toString().equals("admin") && Password.text.toString().equals("1234"))
             {
                 flag = 1
                 db.insertLoggedperson(Username.text.toString(),Password.text.toString())
+                intent4.putExtra("data_array",map_data)
                 startActivity(intent4)
             }
             for (i in 0 until data.size) {
@@ -67,6 +68,7 @@ class login_signup2 : AppCompatActivity() {
 
         }
         register_text.setOnClickListener {
+            intent1.putExtra("data_array",map_data)
             startActivity(intent1)
         }
     }

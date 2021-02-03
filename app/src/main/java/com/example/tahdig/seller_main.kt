@@ -20,7 +20,7 @@ class seller_main : AppCompatActivity() {
         //res num
         val intent1_3 = intent
         val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
-        val res_num = 1//map_data["res_no"].toString().toInt()
+        val res_num = map_data["res_no"].toString().toInt()
         //res num
 
 
@@ -75,6 +75,9 @@ class seller_main : AppCompatActivity() {
     }
 
     fun onAlertDialog(view: View) {
+        val intent1_3 = intent
+        val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
+
         val intent1 = Intent(this, login_signup2::class.java)
 
         //Instantiate builder variable
@@ -91,12 +94,13 @@ class seller_main : AppCompatActivity() {
             "Yes"
         ) { dialog, id ->
             // User clicked Update Now button
-//            val context = this
-//            val db = DatabaseHandler(context)
-//            db.deletefromLoggedperson()
-//            db.deleteFromLoggedRestaurants()
-            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+            val context = this
 
+            val db = DatabaseHandler(context).writableDatabase
+            db.delete("Loggedperson", null, null)
+            db.delete("LoggedRestaurants", null, null)
+            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+            intent1.putExtra("data_array",map_data)
             startActivity(intent1)
 
         }

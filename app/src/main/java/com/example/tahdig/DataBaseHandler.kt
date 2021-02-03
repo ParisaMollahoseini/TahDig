@@ -244,7 +244,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
 //        return list
 //    }
 
-    fun insertLoggedRestaurants(resID:Int,name:String,menu:String){
+    fun insertLoggedRestaurants(resID:Int,name:String,menu:String): Long {
         val db = this.writableDatabase
         val cv = ContentValues()
 
@@ -253,6 +253,11 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         cv.put("menu", menu)
 
         var result = db.insert("LoggedRestaurants", null, cv)
+        if (result ==-1.toLong())
+            Toast.makeText(context, "LoggedRestaurants insertion failed", Toast.LENGTH_SHORT).show()
+        else
+            Toast.makeText(context, "LoggedRestaurants inserted successfully!", Toast.LENGTH_SHORT).show()
+        return result
     }
 
     fun deleteFromLoggedRestaurants(){

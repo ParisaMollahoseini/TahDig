@@ -20,6 +20,14 @@ class MainActivity : AppCompatActivity() {
 
         start_button.setOnClickListener {
             val context = this
+            val intent11 = intent
+            val map_data : HashMap<String, String>
+            if (getIntent().getSerializableExtra("data_array") != null)
+                map_data = intent11.getSerializableExtra("data_array")as HashMap<String, String>
+            else
+                map_data  = HashMap()
+
+
             val db1 = DatabaseHandler(context)
             val db  = db1.readableDatabase
             val num = DatabaseUtils.queryNumEntries(db, "Loggedperson")
@@ -31,7 +39,6 @@ class MainActivity : AppCompatActivity() {
                 val username1 = result.getString(result.getColumnIndex("username"))
                 val password1 = result.getString(result.getColumnIndex("password"))
 
-                var map_data : HashMap<String, String> = HashMap()
 
                 //restaurant num
                 val data = db1.findRestaurants(username1)
@@ -39,20 +46,26 @@ class MainActivity : AppCompatActivity() {
                     map_data.put("res_no","0")
                 else
                     map_data.put("res_no","1")
+
                 //restaurant num
 
                 result.close()
                 if( username1.equals("admin") && password1.equals("1234")) {
+
+                        intent2.putExtra("data_array",map_data)
                     startActivity(intent2)
 
                 }
                 else {
-                    intent3.putExtra("data_array",map_data)
+
+                        intent3.putExtra("data_array",map_data)
                     startActivity(intent3)
                 }
             }
             else
             {
+
+                    intent1.putExtra("data_array",map_data)
                 startActivity(intent1)
             }
 
