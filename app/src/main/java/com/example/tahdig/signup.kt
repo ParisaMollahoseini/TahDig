@@ -34,10 +34,6 @@ class signup : AppCompatActivity() {
                     startActivity(intent1)
                 }
             }
-
-
-
-
         }
     }
 }

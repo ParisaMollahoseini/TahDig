@@ -41,14 +41,13 @@ class login_signup2 : AppCompatActivity() {
                     Toast.makeText( this,"You are logged in successfully...", Toast.LENGTH_SHORT).show()
                     db.insertLoggedperson(Username.text.toString(),Password.text.toString())
                     /////////////////////
-//                    var ResList = db.findRestaurants(Username.toString())
-//                    for (j in 0 until ResList.size)
-//                    {
-//                            Toast.makeText( this,"You are logged in successfully...", Toast.LENGTH_SHORT).show()
-//                            db.insertLoggedRestaurants(ResList[j].id, ResList[j].)
-//                    }
-//                    }
-//                    db.insertLoggedRestaurants()
+                    var ResList = db.findRestaurants(Username.text.toString())
+                    for (j in 0 until ResList.size)
+                    {
+                            db.insertLoggedRestaurants(ResList[j].id, ResList[j].name,ResList[j].menu)
+                    }
+                    Toast.makeText( this,"All restaurants added successfully...", Toast.LENGTH_SHORT).show()
+                    ////////////////////////////////////
                     startActivity(intent3)
                 }
             }

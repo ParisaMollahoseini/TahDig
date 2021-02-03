@@ -280,6 +280,12 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         }
         return list
     }
+
+    fun DeleteFromNewRequests() {
+        val db = this.writableDatabase
+        db.delete("NewRequests",null,null)
+    }
+
 }
 
 class AbstractRestaurant {

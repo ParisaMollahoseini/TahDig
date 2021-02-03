@@ -15,9 +15,7 @@ class seller_main : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller_main)
 
-        /////////////////////////////
-//
-//        val intent1 = Intent(this,request_list::class.java)
+        ///////////////////////////// sth like in admin for restaurant list
 //
 //        //check number of req
 //        var req_num = 0
@@ -62,8 +60,9 @@ class seller_main : AppCompatActivity() {
         ) { dialog, id ->
             // User clicked Update Now button
             val context = this
-            val db = DatabaseHandler(context).writableDatabase
-            db.delete("Loggedperson", null, null)
+            val db = DatabaseHandler(context)
+            db.deletefromLoggedperson()
+            db.deleteFromLoggedRestaurants()
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
 
             startActivity(intent1)
