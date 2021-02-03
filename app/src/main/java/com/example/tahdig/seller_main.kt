@@ -28,6 +28,16 @@ class seller_main : AppCompatActivity() {
 //        }
 
         //////////////////////////////////
+        val context = this
+        val db = DatabaseHandler(context).readableDatabase
+
+        val query = "Select * from Loggedperson"
+        val result = db.rawQuery(query, null)
+        result.moveToFirst()
+        val username1 = result.getString(result.getColumnIndex("username"))
+
+        sellertitle_toolbar.setTitle(username1)
+        result.close()
 
         sellertitle_toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
