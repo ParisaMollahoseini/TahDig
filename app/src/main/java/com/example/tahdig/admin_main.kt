@@ -25,6 +25,7 @@ class admin_main : AppCompatActivity() {
         req_title.setOnClickListener {
            startActivity(intent1)
         }
+
         admintitle_toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_logout -> {

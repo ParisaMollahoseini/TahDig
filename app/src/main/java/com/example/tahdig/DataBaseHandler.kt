@@ -68,7 +68,6 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
                 "menu VARCHAR(100))"
 
         db?.execSQL(createTableLoggedRestaurants)
-
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {}
@@ -161,7 +160,7 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         cv.put("ownerUsername", ownerUsername)
         cv.put("businessLicenseNumber", businessLicenseNumber)
         cv.put("phoneNumber", phoneNumber)
-        cv.put("addressID", addressID) /////
+        cv.put("addressID", addressID)
 
         var result = db.insert("Restaurant", null, cv)
 
@@ -226,22 +225,38 @@ class DatabaseHandler(var context:Context) : SQLiteOpenHelper(context, DATABASE_
         return list
     }
 
-    fun findRequests(ownerUsername:String): MutableList<AbstractRestaurant> {
-        val list: MutableList<AbstractRestaurant> = ArrayList()
-        val db = this.readableDatabase
-        val query = "Select * from NewRequests where ownerUsername = $ownerUsername" ///////////
-        val result = db.rawQuery(query, null)
-        if (result.moveToFirst()) {
-            do {
-                val res = AbstractRestaurant()
-                res.id = result.getInt(result.getColumnIndex("id")) //////
-                res.name = result.getString(result.getColumnIndex("name"))
-                res.menu = result.getString(result.getColumnIndex("password"))
-                list.add(res)
-            }
-            while (result.moveToNext())
-        }
-        return list
+//    fun findRequests(ownerUsername:String): MutableList<AbstractRestaurant> {
+//        val list: MutableList<AbstractRestaurant> = ArrayList()
+//        val db = this.readableDatabase
+//        val query = "Select * from NewRequests where ownerUsername = $ownerUsername" ///////////
+//        val result = db.rawQuery(query, null)
+//        if (result.moveToFirst()) {
+//            do {
+//                val res = AbstractRestaurant()
+//                res.id = result.getInt(result.getColumnIndex("id")) //////
+//                res.name = result.getString(result.getColumnIndex("name"))
+//                res.menu = result.getString(result.getColumnIndex("password"))
+//                list.add(res)
+//            }
+//            while (result.moveToNext())
+//        }
+//        return list
+//    }
+
+    fun insertLoggedRestaurants(resID:Int,name:String,menu:String){
+        val db = this.writableDatabase
+        val cv = ContentValues()
+
+        cv.put("id", resID)
+        cv.put("name", name)
+        cv.put("menu", menu)
+
+        var result = db.insert("LoggedRestaurants", null, cv)
+    }
+
+    fun deleteFromLoggedRestaurants(){
+        val db = this.writableDatabase
+        db.delete("LoggedRestaurants",null,null)
     }
 
     fun readDatareq(): MutableList<requestlist> {
