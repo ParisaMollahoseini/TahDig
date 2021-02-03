@@ -43,7 +43,17 @@ class restaurant_register : AppCompatActivity() {
                 "Yes"
             ) { dialog, id ->
                 /// add registration request
+                val resName = res_name.text.toString()
+                val resbusinessLicenseNumber = businessLicenseNumber.text.toString()
+                val resPhone = res_phone.text.toString()
 
+                val res_addr = db.insertAddress(res_city_text.text.toString(),res_street_text.text.toString(),res_alley_text.text.toString(),
+                    res_number_text.text.toString().toInt())
+                //res_add >>> address id
+                if (res_addr != -1.toLong() )
+                {
+
+                }
                 /// add registration request
                 intent1.putExtra("data_array",map_data)
                 startActivity(intent1)
