@@ -64,13 +64,18 @@ class seller_main : AppCompatActivity() {
             //////////////////////////////////
             sellertitle_toolbar.setTitle(username1)
             result.close()
-            db.close()
+
+            ///from restaurant
+            val q = "Select * from LoggedRestaurants"
+            val res = db.rawQuery(q, null)
+            res.moveToFirst()
+            val res_name = res.getString(res.getColumnIndex("name"))
+            seller_title.text = res_name
+            res.close()
 
             ///from restaurant
 
-            seller_title.text = "resname"
 
-            ///from restaurant
             add_menu1.setOnClickListener {
                 val intent33 = Intent(this, resMenu::class.java)
                 intent33.putExtra("data_array",map_data)
