@@ -30,6 +30,7 @@ class login_signup2 : AppCompatActivity() {
             if(Username.text.toString().equals("admin") && Password.text.toString().equals("1234"))
             {
                 flag = 1
+                db.insertLoggedperson(Username.text.toString(),Password.text.toString())
                 startActivity(intent4)
             }
             for (i in 0 until data.size) {
