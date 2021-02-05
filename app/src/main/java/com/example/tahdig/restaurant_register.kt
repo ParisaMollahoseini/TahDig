@@ -54,13 +54,17 @@ class restaurant_register : AppCompatActivity() {
                 if (res_addr != -1.toLong())
                 {
                     val query = "Select * from Loggedperson"
-                    val result = db.readableDatabase.rawQuery(query, null)
+                    val db1 = db.readableDatabase
+                    val result = db1.rawQuery(query, null)
                     result.moveToFirst()
                     val ownerUsername = result.getString(result.getColumnIndex("username"))
-                    db.insertNewRequests(resName,ownerUsername,resbusinessLicenseNumber,resPhone,res_addr.toInt())
+                    db.insertNewRequests(resName,ownerUsername,resbusinessLicenseNumber,resPhone,1)
+
+                    db1.close()
+                    result.close()
+
                     db.close()
                 }
-
                 /// add registration request
                 intent1.putExtra("data_array",map_data)
                 startActivity(intent1)

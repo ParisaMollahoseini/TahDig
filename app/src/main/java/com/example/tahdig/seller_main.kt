@@ -19,7 +19,19 @@ class seller_main : AppCompatActivity() {
         //res num
         val intent1_3 = intent
         val map_data :HashMap<String,String> = intent1_3.getSerializableExtra("data_array") as HashMap<String, String>
+
+        val db = DatabaseHandler(this).readableDatabase
+        val query = "Select * from Loggedperson"
+        val result = db.rawQuery(query, null)
+        result.moveToFirst()
+        val username1 = result.getString(result.getColumnIndex("username"))
+        result.close()
+        db.close()
+
+        val db1 = DatabaseHandler(this)
+        val result_res =  db1.findRestaurants(username1)
         val res_num = map_data["res_no"].toString().toInt()
+        db1.close()
         //res num
 
 
@@ -27,15 +39,10 @@ class seller_main : AppCompatActivity() {
 
             setContentView(R.layout.seller_no_restaurant)
             val intent2 = Intent(this, restaurant_register::class.java)
-            val context = this
-            val db = DatabaseHandler(context).readableDatabase
 
-            val query = "Select * from Loggedperson"
-            val result = db.rawQuery(query, null)
-            result.moveToFirst()
-            val username1 = result.getString(result.getColumnIndex("username"))
-            sellertitle_toolbar_norest.setTitle(username1)
-            result.close()
+            sellertitle_toolbar_norest.title = username1.toString()
+
+
 
             sellertitle_toolbar_norest.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
@@ -54,27 +61,18 @@ class seller_main : AppCompatActivity() {
         }
             else {
             setContentView(R.layout.activity_seller_main)
-            val context = this
-            val db = DatabaseHandler(context).readableDatabase
 
-            val query = "Select * from Loggedperson"
-            val result = db.rawQuery(query, null)
-            result.moveToFirst()
-            val username1 = result.getString(result.getColumnIndex("username"))
+
             //////////////////////////////////
-            sellertitle_toolbar.setTitle(username1)
-            result.close()
-            db.close()
+            sellertitle_toolbar.title = username1
+
 
             ///from restaurant
-//            val db1 = DatabaseHandler(context).readableDatabase
-//            val q = "Select * from LoggedRestaurants"
-//            val res = db1.rawQuery(q, null)
-//            res.moveToFirst()
-//            val res_name = res.getString(res.getColumnIndex("name"))
-//            seller_title.text = res_name
-//            res.close()
-//            db1.close()
+            if(result_res.size > 0 )
+                seller_title.text = result_res[0].name
+
+
+
             ///from restaurant
 
 

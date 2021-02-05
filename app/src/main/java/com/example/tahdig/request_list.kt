@@ -13,6 +13,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_admin_main.*
 import kotlinx.android.synthetic.main.activity_login_signup2.*
 import kotlinx.android.synthetic.main.activity_request_list.*
+import kotlinx.android.synthetic.main.activity_res_menu.*
 import java.sql.SQLException
 
 class request_list : AppCompatActivity() {
@@ -41,8 +42,8 @@ class request_list : AppCompatActivity() {
 
         //get list of req
         val db1  = db.readableDatabase
-        val num = DatabaseUtils.queryNumEntries(db1, "NewRequests")
-
+        val num = DatabaseUtils.queryNumEntries(db1, "newreq")
+        db1.close()
         if (num != 0.toLong()) {
 
             //add list of req to ui
@@ -53,7 +54,7 @@ class request_list : AppCompatActivity() {
                 itemlist.add(
                     "businessLicenseNumber: " + data[i].businessLicenseNumber +
                             "\nowner name: " + data[i].ownerUsername + "\nphone number: " + data[i].phoneNumber
-                            + "\nAddress id: " + data[i].addressID
+                            + "\nAddress id: " + data[i].addressID + "\nresName: " + data[i].restaurant_name
                 )
 
                 adapter.notifyDataSetChanged()
@@ -89,11 +90,23 @@ class request_list : AppCompatActivity() {
                     if (position.get(item)) {
 
                         //update accept request to database
-                        val data = db.readDatareq()
-                        for (j in 0 until data.size) {
-                            db.insertRestaurant(data[j].restaurant_name, data[j].ownerUsername,
-                                data[j].businessLicenseNumber,data[j].phoneNumber,data[j].addressID)
-                        }
+
+                            val businessLicenseNumber = itemlist[item].substringAfter("businessLicenseNumber: ").substringBefore('\n')
+                            val username1 = itemlist[item].substringAfter("\nowner name: ").substringBefore('\n')
+                            val phone = itemlist[item].substringAfter("\nphone number: ").substringBefore('\n')
+                            val addrid = itemlist[item].substringAfter("\nAddress id: ").substringBefore('\n')
+                            val resname = itemlist[item].substringAfter("\nresName: ").substringBefore('\n')
+
+                        ///add to database
+
+                            ///add to database
+
+                         val result = db.insertRestaurant(resname,username1,
+                                businessLicenseNumber,phone,addrid.toInt())
+                        if (result == -1.toLong())
+                            Toast.makeText( this,"restaurant not inserted", Toast.LENGTH_SHORT).show()
+
+                        map_data.put("res_no","1")
                             db.DeleteFromNewRequests()
                         ///update accept request to database
 
@@ -104,7 +117,7 @@ class request_list : AppCompatActivity() {
                 }
                 position.clear()
                 adapter.notifyDataSetChanged()
-                Toast.makeText( this,"Selected requests accepted", Toast.LENGTH_SHORT).show()
+                //Toast.makeText( this,"Selected requests accepted", Toast.LENGTH_SHORT).show()
 
 
             }

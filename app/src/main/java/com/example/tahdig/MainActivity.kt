@@ -2,6 +2,7 @@ package com.example.tahdig
 
 import android.content.Intent
 import android.database.DatabaseUtils
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -16,7 +17,12 @@ class MainActivity : AppCompatActivity() {
         val intent2 = Intent(this,admin_main::class.java)
         val intent3 = Intent(this,seller_main::class.java)
 
+        About_us_button.setOnClickListener {
+            val db1 = DatabaseHandler(this)
+            val result_res =  db1.findRestaurants("w1")
+            Toast.makeText(this, "name:"+result_res[0].name, Toast.LENGTH_SHORT).show()
 
+        }
 
         start_button.setOnClickListener {
             val context = this
